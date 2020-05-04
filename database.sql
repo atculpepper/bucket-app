@@ -42,12 +42,11 @@ CREATE TABLE "user"
         "search_location" varchar(255)
     );
 
-    CREATE TABLE "user_photos_experiences"
+    CREATE TABLE "user_experiences"
     (
         "id" SERIAL PRIMARY KEY,
         "user_id" INT REFERENCES "user" NOT NULL,
         "experience_id" INT REFERENCES "experiences" NOT NULL,
-        "photo_id" INT REFERENCES "photos",
-        "completed" BOOLEAN DEFAULT 'FALSE',
+        "completed" BOOLEAN,
         "location" VARCHAR
     );
