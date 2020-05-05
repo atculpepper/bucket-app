@@ -5,7 +5,7 @@
 -- Otherwise you will have errors!
 
 --THIS IS ALL WRONG
---TODO: FIX ITp
+--TODO: FIX IT
 
 
 CREATE TABLE "user"
