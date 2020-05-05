@@ -6,12 +6,14 @@ import mapStoreToProps from "../../redux/mapStoreToProps";
 
 class UserPage extends Component {
   componentDidMount() {
+    console.log("the component did mount");
     this.props.dispatch({
       type: "GET_LIST_ITEMS",
-      payload: this.props.match.params.id,
+      payload: this.props.store.user.id,
     });
   }
 
+  //for POSTING a bucketItem
   state = {
     bucketItem: "",
   };
@@ -61,24 +63,19 @@ class UserPage extends Component {
               Add to List
             </button>
           </center>
+          <div>
+            {this.props.store.getList.map((item, index) => (
+              <div key={index} className="listItem">
+                <div>
+                  <p>{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
   }
 }
 
-// this could also be written with destructuring parameters as:
-// const UserPage = ({ user }) => (
-// and then instead of `props.user.username` you could use `user.username`
-
-// const UserPage = (props) => (
-//   <div>
-//     <h1 id="welcome">{props.store.user.username}'s Bucket List</h1>
-//     <p>Your ID is: {props.store.user.id}</p>
-
-//     <LogOutButton className="log-in" />
-//   </div>
-// )}
-
-// this allows us to use <App /> in index.js
 export default connect(mapStoreToProps)(UserPage);
