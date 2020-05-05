@@ -5,6 +5,13 @@ import LogOutButton from "../LogOutButton/LogOutButton";
 import mapStoreToProps from "../../redux/mapStoreToProps";
 
 class UserPage extends Component {
+  componentDidMount() {
+    this.props.dispatch({
+      type: "GET_LIST_ITEMS",
+      payload: this.props.match.params.id,
+    });
+  }
+
   state = {
     bucketItem: "",
   };
