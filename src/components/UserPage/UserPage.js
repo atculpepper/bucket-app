@@ -9,15 +9,52 @@ class UserPage extends Component {
     bucketItem: "",
   };
 
-  //write a componentDidMount that GETS the list data
+  //TODO: write a componentDidMount that GETS the list data
+
+  //TODO: write a handleChangeFor function that updates local state
+
+  //TODO: write an onClick function for Add to List button that dispatches "ADD_LIST_ITEM" to the server
+
+  //TODO: add styling
 
   render() {
     return (
       <div>
-        <h1 id="welcome">{this.props.store.user.username}'s Bucket List</h1>
-        <p>Your ID is: {this.props.store.user.id}</p>
+        <div>
+          <h1 id="welcome">{this.props.store.user.username}'s Bucket List</h1>
+          {/* <p>Your ID is: {this.props.store.user.id}</p> */}
 
-        <LogOutButton className="log-in" />
+          <LogOutButton className="log-in" />
+        </div>
+
+        <div>
+          <form className="formPanel" onSubmit={this.addListItem}>
+            <h1>Add an experience!</h1>
+            <div>
+              <label htmlFor="username">
+                Bucket Item:
+                <input
+                  type="text"
+                  name="bucket list item..."
+                  value={this.state.bucketItem}
+                  // TODO: onChange={this.handleInputChangeFor("bucketItem")}
+                />
+              </label>
+            </div>
+          </form>
+
+          <center>
+            <button
+              type="button"
+              className="link-button"
+              onClick={() => {
+                // this.props.dispatch({ type: "SET_TO_LOGIN_MODE" });
+              }}
+            >
+              Add to List
+            </button>
+          </center>
+        </div>
       </div>
     );
   }
