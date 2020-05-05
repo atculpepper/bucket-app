@@ -3,7 +3,7 @@ const pool = require("../modules/pool");
 const router = express.Router();
 
 /**
- * GET route template
+ * GET route for getting user experiences based on passing ID as a param
  */
 router.get("/:id", (req, res) => {
   const userID = req.params.id;
