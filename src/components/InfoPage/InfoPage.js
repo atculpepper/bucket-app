@@ -7,7 +7,7 @@ import React from "react";
 
 const InfoPage = () => (
   <div>
-    <p>Update User Info </p>
+    <p>Update User Profile </p>
   </div>
 );
 
