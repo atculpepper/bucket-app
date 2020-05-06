@@ -7,7 +7,6 @@ function* getList() {
     const response = yield axios.get(`/api/user/${itemID}`);
     yield put({
       type: "SET_LIST_ITEMS",
-      payload: response.data,
     });
   } catch (err) {
     console.warn(err);
