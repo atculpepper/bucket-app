@@ -16,7 +16,7 @@ router.get("/:id", (req, res) => {
     .then((responseDB) => {
       const dbRows = responseDB.rows;
       console.table(dbRows);
-      res.sendStatus(200);
+      res.send(dbRows);
     })
     .catch((err) => {
       console.log("error:", err);
