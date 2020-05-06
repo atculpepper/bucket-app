@@ -5,36 +5,83 @@ import LogOutButton from "../LogOutButton/LogOutButton";
 import mapStoreToProps from "../../redux/mapStoreToProps";
 
 class UserPage extends Component {
+  componentDidMount() {
+    console.log("the component did mount");
+    console.log(this.props.match.params.id);
+    this.props.dispatch({
+      type: "GET_LIST_ITEMS",
+      payload: this.props.store.user.id,
+    });
+  }
+
+  //for POSTING a bucketItem
   state = {
     bucketItem: "",
   };
 
-  //write a componentDidMount that GETS the list data
+  //TODO: write a componentDidMount that GETS the list data
+
+  //TODO: write a handleChangeFor function that updates local state
+  handleInputChangeFor = (bucketItem) => (event) => {
+    this.setState({
+      [bucketItem]: event.target.value,
+    });
+  };
+
+  //TODO: write an onClick function for Add to List button that dispatches "ADD_LIST_ITEM" to the server
+
+  //TODO: add styling
 
   render() {
     return (
       <div>
-        <h1 id="welcome">{this.props.store.user.username}'s Bucket List</h1>
-        <p>Your ID is: {this.props.store.user.id}</p>
+        <div>
+          <h1 id="welcome">{this.props.store.user.username}'s Bucket List</h1>
+          {/* <p>Your ID is: {this.props.store.user.id}</p> */}
 
-        <LogOutButton className="log-in" />
+          <LogOutButton className="log-in" />
+        </div>
+
+        <div>
+          <form className="formPanel" onSubmit={this.addListItem}>
+            <h1>Add an experience!</h1>
+            <div>
+              <label htmlFor="username">
+                Bucket Item:
+                <input
+                  type="text"
+                  name="bucket list item..."
+                  value={this.state.bucketItem}
+                  onChange={this.handleInputChangeFor("bucketItem")}
+                />
+              </label>
+            </div>
+          </form>
+
+          <center>
+            <button
+              type="button"
+              className="link-button"
+              onClick={() => {
+                this.props.dispatch({ type: "ADD_ITEM" });
+              }}
+            >
+              Add to List
+            </button>
+          </center>
+          <div>
+            {this.props.store.getList.map((item, index) => (
+              <div key={index} className="listItem">
+                <div>
+                  <p>{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-// this could also be written with destructuring parameters as:
-// const UserPage = ({ user }) => (
-// and then instead of `props.user.username` you could use `user.username`
-
-// const UserPage = (props) => (
-//   <div>
-//     <h1 id="welcome">{props.store.user.username}'s Bucket List</h1>
-//     <p>Your ID is: {props.store.user.id}</p>
-
-//     <LogOutButton className="log-in" />
-//   </div>
-// )}
-
-// this allows us to use <App /> in index.js
 export default connect(mapStoreToProps)(UserPage);

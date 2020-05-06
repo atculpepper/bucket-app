@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -9,7 +9,10 @@ const AboutPage = () => (
   <div>
     <div>
       <p>
-        This about page is for anyone to read!
+        Bucket is an application that will help you to develop, store, and
+        explore the Bucket List of experiences that you want to have within your
+        lifetime. It was developed during a 2 week sprint while Anne Culpepper
+        was a full stack student at Prime Digital Academy in Kansas City.
       </p>
     </div>
   </div>
