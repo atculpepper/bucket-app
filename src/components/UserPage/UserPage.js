@@ -63,7 +63,7 @@ class UserPage extends Component {
               type="button"
               className="link-button"
               onClick={() => {
-                // this.props.dispatch({ type: "SET_TO_LOGIN_MODE" });
+                this.props.dispatch({ type: "ADD_ITEM" });
               }}
             >
               Add to List
