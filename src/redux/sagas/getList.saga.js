@@ -1,0 +1,20 @@
+import axios from "axios";
+import { put, takeLatest } from "redux-saga/effects";
+
+function* getList() {
+  try {
+    const itemID = payload;
+    const response = yield axios.get(`/api/user/${itemID}`);
+    yield put({
+      type: "SET_LIST_ITEMS",
+    });
+  } catch (err) {
+    console.warn(err);
+  }
+}
+
+function* getListSaga() {
+  yield takeLatest("GET_LIST_ITEMS", getList);
+}
+
+export default getListSaga;
