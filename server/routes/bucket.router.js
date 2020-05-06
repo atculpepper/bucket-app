@@ -4,6 +4,7 @@ const router = express.Router();
 
 /**
  * GET route for getting user experiences based on passing ID as a param
+ * TODO: Update query to include photo
  */
 router.get("/:id", (req, res) => {
   const userID = req.params.id;
@@ -15,7 +16,7 @@ router.get("/:id", (req, res) => {
     .then((responseDB) => {
       const dbRows = responseDB.rows;
       console.table(dbRows);
-      res.sendStatus(200);
+      res.send(dbRows);
     })
     .catch((err) => {
       console.log("error:", err);
@@ -24,8 +25,14 @@ router.get("/:id", (req, res) => {
 });
 
 /**
- * POST route template
+ * POST route template to add list item (link with user id)
  */
-router.post("/", (req, res) => {});
+router.post("/:id", (req, res) => {});
+
+//PUT route to update single list item
+router.put("/:id", (req, res) => {});
+
+// route to delete list item (?)
+router.delete("/:id", (req, res) => {});
 
 module.exports = router;
