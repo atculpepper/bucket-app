@@ -25,7 +25,7 @@ router.get("/:id", (req, res) => {
 });
 
 /**
- * POST route template to add list item (link with user id)
+ * POST route template to add list item (link with user id) STILL NEEDS WORK
  */
 router.post("/:id", (req, res) => {
   let newItem = req.body;
