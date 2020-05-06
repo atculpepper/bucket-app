@@ -66,7 +66,7 @@ class UserPage extends Component {
               Add to List
             </button>
           </center>
-          {/* <div>
+          <div>
             {this.props.store.getList.map((item, index) => (
               <div key={index} className="listItem">
                 <div>
@@ -74,11 +74,12 @@ class UserPage extends Component {
                 </div>
               </div>
             ))}
-          </div> */}
+          </div>
         </div>
-        <div>
+        {/* <div>
           <p>{this.props.store.getList.description}</p>
-        </div>
+          <p>{this.props.store.getList.description}</p>
+        </div> */}
       </div>
     );
   }
