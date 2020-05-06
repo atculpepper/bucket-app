@@ -3,7 +3,7 @@ const pool = require("../modules/pool");
 const router = express.Router();
 
 /**
- * GET route template
+ * GET route to get bucket experiences based on user id
  */
 router.get("/", (req, res) => {});
 
