@@ -31,7 +31,7 @@ router.get("/:id", (req, res) => {
 router.post("/:id", (req, res) => {
   let newItem = req.body;
   console.log(`Adding item`, newItem);
-
+  //this POST route is not currently passing id in to pg as a value, so the GET route that works based on user ID will not GET new post data added in this way
   let queryText = `INSERT INTO "experiences" ("description") VALUES ($1);`;
   pool
     .query(queryText, [newItem.description])

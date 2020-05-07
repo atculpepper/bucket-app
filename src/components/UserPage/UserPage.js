@@ -60,7 +60,10 @@ class UserPage extends Component {
               type="button"
               className="link-button"
               onClick={() => {
-                this.props.dispatch({ type: "ADD_ITEM" });
+                this.props.dispatch({
+                  type: "ADD_ITEM",
+                  payload: this.props.store.user.id,
+                });
               }}
             >
               Add to List
