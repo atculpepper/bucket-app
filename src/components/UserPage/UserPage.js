@@ -18,7 +18,7 @@ class UserPage extends Component {
   //for POSTING a bucketItem
   state = {
     bucketItem: "",
-    userID: this.props.store.user.id,
+    // userID: this.props.store.user.id,
   };
 
   //TODO: write a handleChangeFor function that updates local state
@@ -34,8 +34,8 @@ class UserPage extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h1 id="welcome">{this.props.store.user.username}'s Bucket List</h1>
+        <div className="welcomeDIV">
+          <h1>{this.props.store.user.username}'s Bucket List</h1>
           {/* <p>Your ID is: {this.props.store.user.id}</p> */}
 
           <LogOutButton className="log-in" />
@@ -64,6 +64,7 @@ class UserPage extends Component {
               onClick={() => {
                 this.props.dispatch({
                   type: "ADD_ITEM",
+                  //currently, sending this payload is giving us an empty array
                   payload: {
                     bucketItem: this.state.bucketItem,
                     userID: this.props.store.user.id,
