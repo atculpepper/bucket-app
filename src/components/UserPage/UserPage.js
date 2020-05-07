@@ -18,6 +18,7 @@ class UserPage extends Component {
   //for POSTING a bucketItem
   state = {
     bucketItem: "",
+    userID: this.props.store.user.id,
   };
 
   //TODO: write a handleChangeFor function that updates local state
@@ -25,6 +26,7 @@ class UserPage extends Component {
     this.setState({
       [bucketItem]: event.target.value,
     });
+    console.log(event.target.value);
   };
 
   //TODO: add styling
@@ -62,7 +64,10 @@ class UserPage extends Component {
               onClick={() => {
                 this.props.dispatch({
                   type: "ADD_ITEM",
-                  payload: this.props.store.user.id,
+                  payload: {
+                    bucketItem: this.state.bucketItem,
+                    userID: this.props.store.user.id,
+                  },
                 });
               }}
             >
