@@ -3,6 +3,12 @@ body {
   margin: 0px;
 }
 
+.welcomeDIV {
+  margin: 10px auto;
+  background-color: aqua;
+  padding: 15px;
+}
+
 .alert {
   background-color: #ff4545;
   margin: 50px;
