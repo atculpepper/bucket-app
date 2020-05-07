@@ -18,6 +18,7 @@ class UserPage extends Component {
   //for POSTING a bucketItem
   state = {
     bucketItem: "",
+    userID: this.props.store.user.id,
   };
 
   //TODO: write a handleChangeFor function that updates local state
@@ -25,6 +26,7 @@ class UserPage extends Component {
     this.setState({
       [bucketItem]: event.target.value,
     });
+    console.log(event.target.value);
   };
 
   //TODO: add styling
@@ -60,25 +62,34 @@ class UserPage extends Component {
               type="button"
               className="link-button"
               onClick={() => {
-                this.props.dispatch({ type: "ADD_ITEM" });
+                this.props.dispatch({
+                  type: "ADD_ITEM",
+                  payload: {
+                    bucketItem: this.state.bucketItem,
+                    userID: this.props.store.user.id,
+                  },
+                });
               }}
             >
               Add to List
             </button>
           </center>
-          {/* <div>
+          <div>
             {this.props.store.getList.map((item, index) => (
               <div key={index} className="listItem">
                 <div>
-                  <p>{item.description}</p>
+                  <ul>
+                    <li className="listItem">{item.description}</li>
+                  </ul>
                 </div>
               </div>
             ))}
-          </div> */}
+          </div>
         </div>
-        <div>
+        {/* <div>
           <p>{this.props.store.getList.description}</p>
-        </div>
+          <p>{this.props.store.getList.description}</p>
+        </div> */}
       </div>
     );
   }

@@ -32,7 +32,7 @@ const Nav = (props) => {
         {props.store.user.id && (
           <>
             <Link className="nav-link" to="/info">
-              User Profile
+              Profile
             </Link>
             <LogOutButton className="nav-link" />
             <Link className="nav-link" to="/explore">

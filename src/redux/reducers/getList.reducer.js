@@ -1,4 +1,4 @@
-const getList = (state = {}, action) => {
+const getList = (state = [], action) => {
   switch (action.type) {
     case "SET_LIST_ITEMS":
       return action.payload;

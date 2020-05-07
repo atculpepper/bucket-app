@@ -3,8 +3,8 @@ import { put, takeLatest } from "redux-saga/effects";
 
 function* addItem() {
   try {
-    // const itemID = payload;
-    const response = yield axios.get(`/api/user/${itemID}`);
+    const userID = action.payload;
+    const response = yield axios.post(`/api/user/${userID}`);
     yield put({
       type: "SET_NEW_ITEM)",
     });
