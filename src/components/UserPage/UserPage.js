@@ -70,7 +70,9 @@ class UserPage extends Component {
             {this.props.store.getList.map((item, index) => (
               <div key={index} className="listItem">
                 <div>
-                  <p>{item.description}</p>
+                  <ul>
+                    <li className="listItem">{item.description}</li>
+                  </ul>
                 </div>
               </div>
             ))}
