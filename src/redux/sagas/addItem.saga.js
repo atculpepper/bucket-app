@@ -11,7 +11,7 @@ function* addItem(action) {
     yield axios.post(`/api/user/`, action.payload, config);
     console.log(action.payload);
     yield put({
-      type: "SET_NEW_ITEM)",
+      type: "SET_NEW_ITEM",
       // payload: response.data,
       payload: action.payload,
     });

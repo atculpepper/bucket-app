@@ -8,6 +8,7 @@ class UserPage extends Component {
   componentDidMount() {
     console.log("the component did mount");
     // console.log(this.props.match.params.id);
+
     this.props.dispatch({
       type: "GET_LIST_ITEMS",
       //passing the id as a payload because the query on server side is set up to receive an id
