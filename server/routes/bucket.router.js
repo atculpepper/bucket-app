@@ -8,7 +8,6 @@ const {
 /**
 =======
  * GET route for getting user experiences based on passing ID as a param
- * TODO: Update query to include photo
  */
 router.get("/:id", rejectUnauthenticated, (req, res) => {
   const userID = req.params.id;

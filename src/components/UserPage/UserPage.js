@@ -3,8 +3,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import mapStoreToProps from "../../redux/mapStoreToProps";
+// import { getList } from "../../redux/actions/getListaction";
 
 class UserPage extends Component {
+  //for POSTING a bucketItem
+  state = {
+    bucketItem: "",
+    // userID: this.props.store.user.id,
+  };
+
+  //this method runs when component is mounted to the App
   componentDidMount() {
     console.log("the component did mount");
     // console.log(this.props.match.params.id);
@@ -16,11 +24,15 @@ class UserPage extends Component {
     });
   }
 
-  //for POSTING a bucketItem
-  state = {
-    bucketItem: "",
-    // userID: this.props.store.user.id,
-  };
+  // shouldComponentUpdate(nextProps) {
+  //   if (
+  //     this.props.store.addItem.description !==
+  //     nextProps.store.addItem.description
+  //   ) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
   //TODO: write a handleChangeFor function that updates local state
   handleInputChangeFor = (bucketItem) => (event) => {
@@ -65,12 +77,20 @@ class UserPage extends Component {
               onClick={() => {
                 this.props.dispatch({
                   type: "ADD_ITEM",
-                  //currently, sending this payload is giving us an empty array
                   payload: {
                     bucketItem: this.state.bucketItem,
                     userID: this.props.store.user.id,
                   },
+                  //need to call to getList function!
+                  // getList();
                 });
+                // .then(() => {
+                //   this.props.dispatch({
+                //     type: "GET_LIST_ITEMS",
+                //     //passing the id as a payload because the query on server side is set up to receive an id
+                //     payload: this.props.store.user.id,
+                //   });
+                // });
               }}
             >
               Add to List

@@ -17,6 +17,11 @@ function* addItem(action) {
       // payload: response.data,
       payload: action.payload,
     });
+    const response = yield axios.get(`/api/user/${userID}`);
+    yield put({
+      type: "SET_LIST_ITEMS",
+      payload: response.data,
+    });
     // yield console.log(response.data);
   } catch (err) {
     console.warn(err);
