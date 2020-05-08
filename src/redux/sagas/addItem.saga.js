@@ -7,8 +7,10 @@ function* addItem(action) {
     headers: { "Content-Type": "application/json" },
     withCredentials: true,
   };
+  const userID = action.payload.userID;
+
   try {
-    yield axios.post(`/api/user/`, action.payload, config);
+    yield axios.post(`/api/user/${userID}`, action.payload, config);
     console.log(action.payload);
     yield put({
       type: "SET_NEW_ITEM",
