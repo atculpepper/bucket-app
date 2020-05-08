@@ -2,10 +2,13 @@ import axios from "axios";
 import { put, takeLatest } from "redux-saga/effects";
 
 function* addItem(action) {
+  //the config includes the attributes which enables server session to recognize user
+  const config = {
+    headers: { "Content-Type": "application/json" },
+    withCredentials: true,
+  };
   try {
-    const userID = action.payload.userID;
-    yield axios.post(`/api/user/${userID}`);
-    console.log(userID);
+    yield axios.post(`/api/user/`, action.payload, config);
     console.log(action.payload);
     yield put({
       type: "SET_NEW_ITEM)",
