@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
-import LogOutButton from "../LogOutButton/LogOutButton";
-import mapStoreToProps from "../../redux/mapStoreToProps";
+import LogOutButton from "../../LogOutButton/LogOutButton";
+import mapStoreToProps from "../../../redux/mapStoreToProps";
 // import { getList } from "../../redux/actions/getListaction";
 
 class UserPage extends Component {
   //for POSTING a bucketItem
+  //might need to update local state to include experience id ...
   state = {
     bucketItem: "",
     // userID: this.props.store.user.id,
@@ -15,24 +16,12 @@ class UserPage extends Component {
   //this method runs when component is mounted to the App
   componentDidMount() {
     console.log("the component did mount");
-    // console.log(this.props.match.params.id);
-
     this.props.dispatch({
       type: "GET_LIST_ITEMS",
       //passing the id as a payload because the query on server side is set up to receive an id
       payload: this.props.store.user.id,
     });
   }
-
-  // shouldComponentUpdate(nextProps) {
-  //   if (
-  //     this.props.store.addItem.description !==
-  //     nextProps.store.addItem.description
-  //   ) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
 
   //TODO: write a handleChangeFor function that updates local state
   handleInputChangeFor = (bucketItem) => (event) => {
@@ -42,7 +31,15 @@ class UserPage extends Component {
     console.log(event.target.value);
   };
 
+  //event listener for DELETE that captures experienceID ("id")
+  captureID = (item) => {
+    console.log(item.target);
+    console.log(this.props.store.getList);
+    console.log(this.props);
+  };
+
   //TODO: add styling
+  //TODO: add DELETE route and trash icon
 
   render() {
     return (
@@ -101,7 +98,10 @@ class UserPage extends Component {
               <div key={index} className="listItem">
                 <div>
                   <ul>
-                    <li className="listItem">{item.description}</li>
+                    <li className="listItem" onClick={this.captureID}>
+                      {item.description} <br></br>
+                      {item.id}
+                    </li>
                   </ul>
                 </div>
               </div>
