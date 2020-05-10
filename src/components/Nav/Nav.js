@@ -38,6 +38,9 @@ const Nav = (props) => {
             <Link className="nav-link" to="/explore">
               Explore
             </Link>
+            <Link className="nav-link" to="/thingsivedone">
+              Things I've Done
+            </Link>
           </>
         )}
         {/* Always show this link since the about page is not protected */}
