@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import LogOutButton from "../../LogOutButton/LogOutButton";
 import mapStoreToProps from "../../../redux/mapStoreToProps";
 // import { getList } from "../../redux/actions/getListaction";
+import BucketItem from "../../BucketItem/BucketItem";
 
 class UserPage extends Component {
   //for POSTING a bucketItem
@@ -32,11 +33,11 @@ class UserPage extends Component {
   };
 
   //event listener for DELETE that captures experienceID ("id")
-  captureID = (item) => {
-    console.log(item.target);
-    console.log(this.props.store.getList);
-    console.log(this.props);
-  };
+  // captureID = (item) => {
+  //   console.log(item.target);
+  //   console.log(this.props.store.getList);
+  //   console.log(this.props);
+  // };
 
   //TODO: add styling
   //TODO: add DELETE route and trash icon
@@ -78,16 +79,7 @@ class UserPage extends Component {
                     bucketItem: this.state.bucketItem,
                     userID: this.props.store.user.id,
                   },
-                  //need to call to getList function!
-                  // getList();
                 });
-                // .then(() => {
-                //   this.props.dispatch({
-                //     type: "GET_LIST_ITEMS",
-                //     //passing the id as a payload because the query on server side is set up to receive an id
-                //     payload: this.props.store.user.id,
-                //   });
-                // });
               }}
             >
               Add to List
@@ -95,23 +87,10 @@ class UserPage extends Component {
           </center>
           <div>
             {this.props.store.getList.map((item, index) => (
-              <div key={index} className="listItem">
-                <div>
-                  <ul>
-                    <li className="listItem" onClick={this.captureID}>
-                      {item.description} <br></br>
-                      {item.id}
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <BucketItem key={index} item={item} className="listItem" />
             ))}
           </div>
         </div>
-        {/* <div>
-          <p>{this.props.store.getList.description}</p>
-          <p>{this.props.store.getList.description}</p>
-        </div> */}
       </div>
     );
   }
