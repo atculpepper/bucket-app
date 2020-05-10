@@ -69,35 +69,21 @@ router.put("/:id", (req, res) => {});
 
 // route to delete list item
 //I need to pass the experience ID as a param ()...does that mean I need to GET experiences as well?) and then chain my queries so that the list item is deleted from both "experiences" and "user_photos_experiences"
-router.delete("/:id", (req, res) => {
-  let newItem = req.body;
-  let userID = req.params.id;
+router.delete("/:experienceID", (req, res) => {
+  let experienceID = req.params.experienceID;
+  console.log(req.params.experienceID);
 
-  console.log(`Deleting item`, newItem.bucketItem);
-  let queryText = `DELETE FROM "experiences" ("description") VALUES ($1) RETURNING id;`;
-
+  console.log(`Deleting item`, experienceID);
+  let queryText = `DELETE FROM "user_photos_experiences" WHERE "experience_id" = $1;`;
   pool
-    .query(queryText, [newItem.bucketItem])
+    .query(queryText, [experienceID])
     .then((responseDB) => {
-      const experienceID = responseDB.rows[0].id;
-
-      pool
-        .query(
-          `INSERT INTO "user_photos_experiences" ("user_id", "experience_id") VALUES ($1, $2);`,
-          [userID, experienceID]
-        )
-        .then((responseDB) => {
-          const dbRows = responseDB.rows;
-          console.table(dbRows);
-          res.send(dbRows);
-        })
-        .catch((err) => {
-          console.log("err inserting to experiences", err);
-          res.sendStatus(500);
-        });
+      const dbRows = responseDB.rows;
+      console.table(dbRows);
+      res.send(dbRows);
     })
     .catch((err) => {
-      console.log("err inserting to user_photos_experiences", err);
+      console.warn(err);
       res.sendStatus(500);
     });
 });
