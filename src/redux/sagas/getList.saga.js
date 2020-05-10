@@ -11,7 +11,10 @@ function* getList(action) {
       payload: response.data,
     });
   } catch (err) {
-    console.warn(err);
+    // yield put ({
+    //   type: "GET_LIST_ITEMS",
+    // payload:
+    // })
   }
 }
 

@@ -13,13 +13,14 @@ import Footer from "../Footer/Footer";
 
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
-import AboutPage from "../AboutPage/AboutPage";
-import UserPage from "../UserPage/UserPage";
-import InfoPage from "../InfoPage/InfoPage";
-import LandingPage from "../LandingPage/LandingPage";
-import LoginPage from "../LoginPage/LoginPage";
-import RegisterPage from "../RegisterPage/RegisterPage";
-import ExplorePage from "../ExplorePage/ExplorePage";
+import AboutPage from "../Views/AboutPage/AboutPage";
+import UserPage from "../Views/UserPage/UserPage";
+import InfoPage from "../Views/InfoPage/InfoPage";
+import LandingPage from "../Views/LandingPage/LandingPage";
+import LoginPage from "../Views/LoginPage/LoginPage";
+import RegisterPage from "../Views/RegisterPage/RegisterPage";
+import ExplorePage from "../Views/ExplorePage/ExplorePage";
+import ThingsIveDonePage from "../Views/ThingsIveDonePage/ThingsIveDonePage";
 
 import "./App.css";
 
@@ -65,6 +66,12 @@ class App extends Component {
             />
 
             <ProtectedRoute exact path="/explore" component={ExplorePage} />
+
+            <ProtectedRoute
+              exact
+              path="/thingsivedone"
+              component={ThingsIveDonePage}
+            />
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

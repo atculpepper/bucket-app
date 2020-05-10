@@ -9,10 +9,9 @@ const AboutPage = () => (
   <div>
     <div>
       <p>
-        Bucket is an application that will help you to develop, store, and
-        explore the Bucket List of experiences that you want to have within your
-        lifetime. It was developed during a 2 week sprint while Anne Culpepper
-        was a full stack student at Prime Digital Academy in Kansas City.
+        Bucket is an application that was developed during a 2 week sprint. It
+        is Anne Culpepper's solo project for Prime Digital Academy coursework in
+        Kansas City.
       </p>
     </div>
   </div>
