@@ -19,5 +19,6 @@ export default function* rootSaga() {
     userSaga(),
     getListSaga(),
     addItemSaga(),
+    deleteItemSaga(),
   ]);
 }
