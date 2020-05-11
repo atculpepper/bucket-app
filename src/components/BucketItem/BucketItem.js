@@ -14,7 +14,7 @@ class BucketItem extends Component {
   }
 
   state = {
-    heading: "Class Component",
+    completed: "false",
   };
 
   deleteBucketItem = (event) => {
