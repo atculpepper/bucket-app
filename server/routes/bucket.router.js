@@ -12,7 +12,7 @@ const {
 router.get("/:id", rejectUnauthenticated, (req, res) => {
   const userID = req.params.id;
   console.log(userID);
-  const queryText = `SELECT "user_photos_experiences".user_id, "experiences".description, "experiences".id
+  const queryText = `SELECT "user_photos_experiences".user_id, "experiences".description, "experiences".id, "user_photos_experiences".completed
   FROM "user_photos_experiences" JOIN "experiences" ON "user_photos_experiences".experience_id = "experiences".id
   WHERE "user_id" = $1;`;
   pool
@@ -65,10 +65,23 @@ router.post("/:id", (req, res) => {
 });
 
 //PUT route to update single list item
-router.put("/:id", (req, res) => {});
+router.put("/edit/:experienceID", (req, res) => {
+  const queryText = `UPDATE "experiences" SET "description" = $1 WHERE "id" = $2;`;
+  const experienceID = req.params.experienceID;
+  const changedExperience = req.body.description;
+
+  pool
+    .query(queryText, [changedExperience, experienceID])
+    .then((responseDB) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.warn(err);
+      res.sendStatus(500);
+    });
+});
 
 // route to delete list item
-//I need to pass the experience ID as a param ()...does that mean I need to GET experiences as well?) and then chain my queries so that the list item is deleted from both "experiences" and "user_photos_experiences"
 router.delete("/:experienceID", (req, res) => {
   let experienceID = req.params.experienceID;
   console.log(req.params.experienceID);
