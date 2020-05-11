@@ -32,6 +32,11 @@ body {
   box-sizing: border-box;
 }
 
+.BucketListElement {
+  margin: 10px auto;
+  padding: 50px;
+}
+
 input {
   margin: 5px;
   margin-bottom: 10px;

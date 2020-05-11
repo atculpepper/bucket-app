@@ -65,10 +65,23 @@ router.post("/:id", (req, res) => {
 });
 
 //PUT route to update single list item
-router.put("/:id", (req, res) => {});
+router.put("/:experienceID", (req, res) => {
+  const experienceID = req.params.experienceID;
+  const changedExperience = req.body;
+  const queryText = `UPDATE "experiences" SET "description" = $1 WHERE "id" = $2;`;
+
+  pool
+    .query(queryText, [experienceID, changedExperience])
+    .then((responseDB) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.warn(err);
+      res.sendStatus(500);
+    });
+});
 
 // route to delete list item
-//I need to pass the experience ID as a param ()...does that mean I need to GET experiences as well?) and then chain my queries so that the list item is deleted from both "experiences" and "user_photos_experiences"
 router.delete("/:experienceID", (req, res) => {
   let experienceID = req.params.experienceID;
   console.log(req.params.experienceID);

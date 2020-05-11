@@ -35,10 +35,13 @@ class BucketItem extends Component {
   render() {
     const { item } = this.props;
     return (
-      <div>
+      <div className="BucketListElement">
         <div>
-          <button onClick={this.deleteBucketItem}>Delete</button>
-          <button>Edit</button>
+          <button className="btn" onClick={this.deleteBucketItem}>
+            Delete
+          </button>
+          <button className="btn">Edit</button>
+          <button className="btn">Did it!</button>
           <ul>
             <li className="listItem">{item.description}</li>
           </ul>
