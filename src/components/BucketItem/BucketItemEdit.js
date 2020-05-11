@@ -2,18 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapStoreToProps from "../../redux/mapStoreToProps";
 import { withRouter } from "react-router-dom";
-// import BucketItemEdit from "BucketItemEdit";
 
-class BucketItem extends Component {
-  componentDidMount() {
-    // load up all information from the server
-    this.props.dispatch({
-      type: "GET_LIST_ITEMS",
-      //passing the id as a payload because the query on server side is set up to receive an id
-      payload: this.props.store.user.id,
-    });
-  }
-
+class BucketItemEdit extends Component {
   state = {
     completed: "false",
     editModeEnabled: false,
@@ -51,11 +41,10 @@ class BucketItem extends Component {
           <button className="btn">Did it!</button>
           <ul>
             <li className="listItem">
-              {item.description}
               <input
                 type="text"
                 value={item.description}
-                disabled={!this.state.editModeEnabled}
+                // disabled={!this.state.editModeEnabled}
               ></input>
             </li>
           </ul>
@@ -65,4 +54,4 @@ class BucketItem extends Component {
   }
 }
 
-export default withRouter(connect(mapStoreToProps)(BucketItem));
+export default withRouter(connect(mapStoreToProps)(BucketItemEdit));
