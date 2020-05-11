@@ -19,12 +19,16 @@ class BucketItem extends Component {
 
   deleteBucketItem = (event) => {
     console.log(this.props.item.id);
-    // this.props.dispatch({
-    //   type: "DELETE_ITEM",
-    //   payload: {
-    //     experienceID: this.props.item.id,
-    //   },
-    // });
+    this.props.dispatch({
+      type: "DELETE_ITEM",
+      payload: {
+        experienceID: this.props.item.id,
+      },
+    });
+    this.props.dispatch({
+      type: "GET_LIST_ITEMS",
+      payload: this.props.store.user.id,
+    });
   };
 
   render() {
