@@ -25,6 +25,10 @@ class BucketItem extends Component {
         experienceID: this.props.item.id,
       },
     });
+    this.props.dispatch({
+      type: "GET_LIST_ITEMS",
+      payload: this.props.store.user.id,
+    });
   };
 
   render() {
