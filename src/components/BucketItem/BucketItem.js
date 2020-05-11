@@ -15,6 +15,7 @@ class BucketItem extends Component {
 
   state = {
     completed: "false",
+    editModeEnabled: false,
   };
 
   deleteBucketItem = (event) => {
@@ -26,11 +27,10 @@ class BucketItem extends Component {
         userID: this.props.store.user.id,
       },
     });
-    // this.props.dispatch({
-    //   type: "GET_LIST_ITEMS",
-    //   payload: this.props.store.user.id,
-    // });
   };
+
+  //TODO: write updateComplete function to dispatch UPDATE_COMPLETE to update boolean value from false to true
+  //   updateComplete = (event) => {}
 
   render() {
     const { item } = this.props;

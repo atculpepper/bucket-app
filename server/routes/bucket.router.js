@@ -12,7 +12,7 @@ const {
 router.get("/:id", rejectUnauthenticated, (req, res) => {
   const userID = req.params.id;
   console.log(userID);
-  const queryText = `SELECT "user_photos_experiences".user_id, "experiences".description, "experiences".id
+  const queryText = `SELECT "user_photos_experiences".user_id, "experiences".description, "experiences".id, "user_photos_experiences".completed
   FROM "user_photos_experiences" JOIN "experiences" ON "user_photos_experiences".experience_id = "experiences".id
   WHERE "user_id" = $1;`;
   pool
@@ -65,17 +65,17 @@ router.post("/:id", (req, res) => {
 });
 
 //PUT route to update single list item
-router.put("/:experienceID", (req, res) => {
-  const experienceID = req.params.experienceID;
-  const changedExperience = req.body;
+router.put("/edit/:experienceID", (req, res) => {
   const queryText = `UPDATE "experiences" SET "description" = $1 WHERE "id" = $2;`;
+  const experienceID = req.params.experienceID;
+  const changedExperience = req.body.description;
 
   pool
-    .query(queryText, [experienceID, changedExperience])
+    .query(queryText, [changedExperience, experienceID])
     .then((responseDB) => {
       res.sendStatus(200);
     })
-    .catch((error) => {
+    .catch((err) => {
       console.warn(err);
       res.sendStatus(500);
     });
