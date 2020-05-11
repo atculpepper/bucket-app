@@ -23,12 +23,13 @@ class BucketItem extends Component {
       type: "DELETE_ITEM",
       payload: {
         experienceID: this.props.item.id,
+        userID: this.props.store.user.id,
       },
     });
-    this.props.dispatch({
-      type: "GET_LIST_ITEMS",
-      payload: this.props.store.user.id,
-    });
+    // this.props.dispatch({
+    //   type: "GET_LIST_ITEMS",
+    //   payload: this.props.store.user.id,
+    // });
   };
 
   render() {
