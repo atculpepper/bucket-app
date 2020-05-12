@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
+    "aws-sdk": "^2.674.0",
     "axios": "^0.18.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
@@ -16,6 +17,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-dropzone-s3-uploader": "^1.1.0",
     "react-redux": "^6.0.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "^3.0.1",
