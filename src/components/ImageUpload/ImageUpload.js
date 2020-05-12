@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import DropzoneS3Uploader from "react-s3-uploader";
+import DropzoneS3Uploader from "react-dropzone-s3-uploader";
 
 function ImageUpload() {
   const handleFinishedUpload = (info) => {
