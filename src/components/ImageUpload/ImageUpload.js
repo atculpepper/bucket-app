@@ -1,39 +1,42 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import DropzoneS3Uploader from "react-s3-uploader";
+import DropzoneS3Uploader from "react-dropzone-s3-uploader";
+import { withRouter } from "react-router-dom";
+import mapStoreToProps from "../../redux/mapStoreToProps";
 
-function ImageUpload() {
-  const handleFinishedUpload = (info) => {
+class ImageUpload extends Component {
+  handleFinishedUpload = (info) => {
+    console.log("this is the info:", info);
     console.log("File uploaded with filename", info.filename);
     console.log("Access it on s3 at", info.fileUrl);
+    this.props.dispatch({
+      type: "POST_IMAGE_URL",
+      payload: {
+        userID: this.props.store.user.id,
+        imgURL: info.fileUrl,
+      },
+    });
   };
 
-  // render() {
-  const uploadOptions = {
-    server: "http://localhost:5000",
-    signingUrlQueryParams: { uploadType: "avatar" },
-  };
-  //   };
+  render() {
+    const uploadOptions = {
+      server: "http://localhost:5000",
+      signingUrlQueryParams: { uploadType: "avatar" },
+    };
+    const s3Url = "https://annesbucket.s3.amazonaws.com";
 
-  var AWS = require("aws-sdk");
-  AWS.config.getCredentials(function (err) {
-    if (err) console.log(err.stack);
-    //credentials not loaded
-    else {
-      console.log("Access key:", AWS.config.credentials.accessKeyId);
-      console.log("Secret access key:", AWS.config.credentials.secretAccessKey);
-    }
-  });
-
-  const s3Url = "https://annesbucket.s3.amazonaws.com";
-  return (
-    <DropzoneS3Uploader
-      onFinish={handleFinishedUpload}
-      s3Url={s3Url}
-      maxSize={1024 * 1024 * 5}
-      upload={uploadOptions}
-    />
-  );
+    return (
+      <div>
+        <p>Click or drag image to upload</p>
+        <DropzoneS3Uploader
+          onFinish={this.handleFinishedUpload}
+          s3Url={s3Url}
+          maxSize={1024 * 1024 * 5}
+          upload={uploadOptions}
+        />
+      </div>
+    );
+  }
 }
 
-export default connect()(ImageUpload);
+export default withRouter(connect(mapStoreToProps)(ImageUpload));

@@ -14,7 +14,6 @@ function* addItem(action) {
     console.log(action.payload);
     yield put({
       type: "SET_NEW_ITEM",
-      // payload: response.data,
       payload: action.payload,
     });
     const response = yield axios.get(`/api/user/${userID}`);
@@ -22,7 +21,6 @@ function* addItem(action) {
       type: "SET_LIST_ITEMS",
       payload: response.data,
     });
-    // yield console.log(response.data);
   } catch (err) {
     console.warn(err);
   }
@@ -30,7 +28,6 @@ function* addItem(action) {
 
 function* addItemSaga() {
   yield takeLatest("ADD_ITEM", addItem);
-  // console.log(action.payload);
 }
 
 export default addItemSaga;
