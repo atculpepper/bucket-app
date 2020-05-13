@@ -3,8 +3,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import LogOutButton from "../../LogOutButton/LogOutButton";
 import mapStoreToProps from "../../../redux/mapStoreToProps";
-// import { getList } from "../../redux/actions/getListaction";
-// import BucketItem from "../../BucketItem/BucketItem";
 import BucketForm from "../../BucketForm/BucketForm";
 
 class UserPage extends Component {

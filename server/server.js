@@ -11,6 +11,7 @@ const passport = require("./strategies/user.strategy");
 const userRouter = require("./routes/user.router");
 const bucketRouter = require("./routes/bucket.router");
 const UploaderS3Router = require("react-dropzone-s3-uploader/s3router");
+const imageRouter = require("./routes/image.router");
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -26,6 +27,7 @@ app.use(passport.session());
 /* Routes */
 app.use("/api/user", userRouter);
 app.use("/api/user", bucketRouter);
+app.use("/api/imageurl", imageRouter);
 
 //aws route
 app.use(

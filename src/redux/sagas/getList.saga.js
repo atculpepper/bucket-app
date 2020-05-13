@@ -11,10 +11,7 @@ function* getList(action) {
       payload: response.data,
     });
   } catch (err) {
-    // yield put ({
-    //   type: "GET_LIST_ITEMS",
-    // payload:
-    // })
+    console.log("error getting list items:", err);
   }
 }
 

@@ -46,7 +46,7 @@ CREATE TABLE "user"
     (
         "id" SERIAL PRIMARY KEY,
         "user_id" INT REFERENCES "user" NOT NULL,
-        "experience_id" INT REFERENCES "experiences" NOT NULL,
+        "experience_id" INT REFERENCES "experiences",
         "photo_id" INT REFERENCES "photos",
         "completed" BOOLEAN DEFAULT 'FALSE',
         "location" VARCHAR
