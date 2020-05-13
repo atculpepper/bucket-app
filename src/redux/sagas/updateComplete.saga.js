@@ -10,7 +10,11 @@ function* updateComplete(action) {
   const userID = action.payload.userID;
 
   try {
-    yield axios.put(`/api/user/edit/${experienceID}`, action.payload, config);
+    yield axios.put(
+      `/api/user/edit/updateComplete/${experienceID}`,
+      action.payload,
+      config
+    );
     // yield put({
     //   type: "SET_NEW_ITEM",
     //   payload: action.payload,

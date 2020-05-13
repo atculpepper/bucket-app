@@ -82,7 +82,7 @@ router.put("/edit/:experienceID", (req, res) => {
 });
 
 //PUT route to update Complete of a list item
-router.put("/edit/:experienceID", (req, res) => {
+router.put("/edit/updateComplete/:experienceID", (req, res) => {
   const queryText = `UPDATE "user_photos_experiences" 
   SET "completed" = $1
   WHERE "experience_id" = $2;`;

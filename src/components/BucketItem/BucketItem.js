@@ -15,7 +15,7 @@ class BucketItem extends Component {
   }
 
   state = {
-    isComplete: "false",
+    isComplete: false,
     editModeEnabled: false,
   };
 
@@ -70,7 +70,11 @@ class BucketItem extends Component {
             <button className="btn" onClick={this.handleEditClick.bind(this)}>
               Edit
             </button>
-            <button className="btn" onClick={this.updateComplete.bind(this)}>
+            <button
+              className="btn"
+              onClick={this.updateComplete.bind(this)}
+              defaultChecked={this.state.isComplete}
+            >
               Did it!
             </button>
             <ul>
