@@ -34,8 +34,20 @@ class BucketItem extends Component {
     this.setState({ editModeEnabled: !this.state.editModeEnabled });
   }
 
-  updateComplete() {
-    console.log(this.props.item.completed);
+  updateComplete(prevState) {
+    this.setState({
+      isComplete: !prevState.isComplete,
+    });
+    let newState = { ...this.state };
+    console.log(this.state);
+    console.log(this.state.isComplete);
+    this.props.dispatch({
+      type: "UPDATE_COMPLETE",
+      payload: {
+        completeValue: newState.isComplete,
+        experienceID: this.props.item.id,
+      },
+    });
   }
 
   //TODO: write updateComplete function to dispatch UPDATE_COMPLETE to update boolean value from false to true

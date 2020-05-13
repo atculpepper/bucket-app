@@ -8,7 +8,6 @@ import BucketItem from "../BucketItem/BucketItem";
 class BucketForm extends Component {
   state = {
     bucketItem: "",
-    // userID: this.props.store.user.id,
   };
 
   //this method runs when component is mounted to the App

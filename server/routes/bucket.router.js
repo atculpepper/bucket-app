@@ -64,7 +64,7 @@ router.post("/:id", (req, res) => {
     });
 });
 
-//PUT route to update single list item
+//PUT route to update description of a single list item
 router.put("/edit/:experienceID", (req, res) => {
   const queryText = `UPDATE "experiences" SET "description" = $1 WHERE "id" = $2;`;
   const experienceID = req.params.experienceID;
@@ -72,6 +72,25 @@ router.put("/edit/:experienceID", (req, res) => {
 
   pool
     .query(queryText, [changedExperience, experienceID])
+    .then((responseDB) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.warn(err);
+      res.sendStatus(500);
+    });
+});
+
+//PUT route to update Complete of a list item
+router.put("/edit/:experienceID", (req, res) => {
+  const queryText = `UPDATE "user_photos_experiences" 
+  SET "completed" = $1
+  WHERE "experience_id" = $2;`;
+  const completeValue = req.body.completeValue;
+  const experienceID = req.body.experienceID;
+
+  pool
+    .query(queryText, [completeValue, experienceID])
     .then((responseDB) => {
       res.sendStatus(200);
     })
