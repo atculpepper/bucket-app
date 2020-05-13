@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapStoreToProps from "../../redux/mapStoreToProps";
 import { withRouter } from "react-router-dom";
-import BucketItem from "../BucketItem/BucketItem";
+// import BucketItem from "../BucketItem/BucketItem";
 // import BucketItemEdit from "BucketItemEdit";
+import BucketMap from "../BucketMap/BucketMap";
+import BucketItemNotDone from "../BucketItem/BucketItemNotDone";
 
 class BucketForm extends Component {
   state = {
@@ -63,11 +65,14 @@ class BucketForm extends Component {
             Add to List
           </button>
         </center>
-        <div>
+        {/* <BucketMap /> */}
+        <BucketItemNotDone />
+        {/* <BucketItem /> */}
+        {/* <div>
           {this.props.store.getList.map((item, index) => (
             <BucketItem key={index} item={item} className="listItem" />
           ))}
-        </div>
+        </div> */}
       </div>
     );
   }
