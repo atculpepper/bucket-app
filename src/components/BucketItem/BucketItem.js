@@ -46,6 +46,7 @@ class BucketItem extends Component {
       payload: {
         completeValue: newState.isComplete,
         experienceID: this.props.item.id,
+        userID: this.props.store.user.id,
       },
     });
   }
@@ -75,11 +76,11 @@ class BucketItem extends Component {
             <ul>
               <li className="listItem">
                 {item.description}
-                <input
+                {/* <input
                   type="text"
                   value={item.description}
                   disabled={!this.state.editModeEnabled}
-                ></input>
+                ></input> */}
               </li>
             </ul>
           </div>

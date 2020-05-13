@@ -7,6 +7,22 @@ function* updateComplete(action) {
     withCredentials: true,
   };
   const experienceID = action.payload.experienceID;
+  const userID = action.payload.userID;
+
+  try {
+    yield axios.put(`/api/user/edit/${experienceID}`, action.payload, config);
+    // yield put({
+    //   type: "SET_NEW_ITEM",
+    //   payload: action.payload,
+    // });
+    const response = yield axios.get(`/api/user/${userID}`);
+    yield put({
+      type: "SET_LIST_ITEMS",
+      payload: response.data,
+    });
+  } catch (err) {
+    console.warn(err);
+  }
 }
 
 function* updateCompleteSaga() {
