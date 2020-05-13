@@ -14,15 +14,11 @@ class BucketItem extends Component {
       payload: this.props.store.user.id,
     });
   }
-
+  //if item exists, then render it, else don't render it. I need to say that
   render() {
     const { item } = this.props;
 
-    return (
-      <ul>
-        <li className="listItem">{item.description}</li>
-      </ul>
-    );
+    return <ul>{item && <li className="listItem">{item.description}</li>}</ul>;
   }
 }
 
