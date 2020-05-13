@@ -15,7 +15,7 @@ class BucketItem extends Component {
   }
 
   state = {
-    completed: "false",
+    isComplete: "false",
     editModeEnabled: false,
   };
 
@@ -34,34 +34,46 @@ class BucketItem extends Component {
     this.setState({ editModeEnabled: !this.state.editModeEnabled });
   }
 
+  updateComplete() {
+    console.log(this.props.item.completed);
+  }
+
   //TODO: write updateComplete function to dispatch UPDATE_COMPLETE to update boolean value from false to true
   //   updateComplete = (event) => {}
 
   render() {
     const { item } = this.props;
-    return (
-      <div className="BucketListElement">
-        <div>
-          <button className="btn" onClick={this.deleteBucketItem}>
-            Delete
-          </button>
-          <button className="btn" onClick={this.handleEditClick.bind(this)}>
-            Edit
-          </button>
-          <button className="btn">Did it!</button>
-          <ul>
-            <li className="listItem">
-              {item.description}
-              <input
-                type="text"
-                value={item.description}
-                disabled={!this.state.editModeEnabled}
-              ></input>
-            </li>
-          </ul>
+
+    let Completed = item.completed;
+    if (Completed) {
+      return <div></div>;
+    } else {
+      return (
+        <div className="BucketListElement">
+          <div>
+            <button className="btn" onClick={this.deleteBucketItem}>
+              Delete
+            </button>
+            <button className="btn" onClick={this.handleEditClick.bind(this)}>
+              Edit
+            </button>
+            <button className="btn" onClick={this.updateComplete.bind(this)}>
+              Did it!
+            </button>
+            <ul>
+              <li className="listItem">
+                {item.description}
+                <input
+                  type="text"
+                  value={item.description}
+                  disabled={!this.state.editModeEnabled}
+                ></input>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
