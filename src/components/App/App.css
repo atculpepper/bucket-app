@@ -39,6 +39,7 @@ body {
 .BucketListElement {
   margin: 10px auto;
   padding: 50px;
+  border-radius: 2px;
 }
 
 input {

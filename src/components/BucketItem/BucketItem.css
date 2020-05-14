@@ -1,0 +1,16 @@
+.listItem {
+  width: 50%;
+  height: 75px;
+  margin: 25px auto;
+  padding: 20px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  border-style: solid black;
+}
+
+.BucketListElement {
+  margin: 10px auto;
+  padding: 50px;
+  border-radius: 2px;
+  border-style: solid black;
+}

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import mapStoreToProps from "../../redux/mapStoreToProps";
 import { withRouter } from "react-router-dom";
 // import BucketItemEdit from "BucketItemEdit";
+import "./BucketItem.css";
 
 class BucketItem extends Component {
   componentDidMount() {
@@ -17,6 +18,7 @@ class BucketItem extends Component {
   state = {
     isComplete: false,
     editModeEnabled: false,
+    bucketItem: "",
   };
 
   deleteBucketItem = (event) => {
@@ -34,6 +36,13 @@ class BucketItem extends Component {
     this.setState({ editModeEnabled: !this.state.editModeEnabled });
     console.log(this.state.editModeEnabled);
   }
+
+  handleInputChangeFor = (bucketItem) => (event) => {
+    this.setState({
+      [bucketItem]: event.target.value,
+    });
+    console.log(event.target.value);
+  };
 
   //currently updateComplete requires two clicks to change the boolean value from false to true. Why?
   updateComplete(prevState) {
@@ -80,9 +89,11 @@ class BucketItem extends Component {
                 <span>
                   <input
                     type="text"
-                    value={item.description}
+                    // value={item.description}
+                    placeholder={item.description}
                     disabled={!this.state.editModeEnabled}
-                    size="250"
+                    size="75"
+                    onChange={this.handleInputChangeFor("bucketItem")}
                   />
                 </span>
               </li>
@@ -103,10 +114,8 @@ class BucketItem extends Component {
             <button className="btn" onClick={this.updateComplete.bind(this)}>
               Did it!
             </button>
-            <ul>
-              <li disabled={!this.state.editModeEnabled} className="listItem">
-                {item.description}
-              </li>
+            <ul className="listItem">
+              <li disabled={!this.state.editModeEnabled}>{item.description}</li>
             </ul>
           </div>
         </div>
