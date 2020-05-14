@@ -37,6 +37,19 @@ class BucketItem extends Component {
     console.log(this.state.editModeEnabled);
   }
 
+  // submitEdit(event) {
+  //   event.preventDefault();
+
+  //   this.props.dispatch({
+  //     type: "EDIT_BUCKET_ITEM",
+  //     payload: {
+  //       experienceID: this.props.item.id,
+  //       userID: this.props.store.user.id,
+  //     },
+  //   });
+  //   console.log("form submitted");
+  // }
+
   handleInputChangeFor = (bucketItem) => (event) => {
     this.setState({
       [bucketItem]: event.target.value,
@@ -86,7 +99,17 @@ class BucketItem extends Component {
             <ul>
               <li disabled={!this.state.editModeEnabled} className="listItem">
                 {/* {item.description} */}
-                <span>
+                <form
+                  onSubmit={(event) => {
+                    this.props.dispatch({
+                      type: "EDIT_ITEM",
+                      payload: {
+                        experienceID: this.props.item.id,
+                        userID: this.props.store.user.id,
+                      },
+                    });
+                  }}
+                >
                   <input
                     type="text"
                     // value={item.description}
@@ -95,7 +118,7 @@ class BucketItem extends Component {
                     size="75"
                     onChange={this.handleInputChangeFor("bucketItem")}
                   />
-                </span>
+                </form>
               </li>
             </ul>
           </div>
