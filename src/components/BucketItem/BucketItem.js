@@ -34,13 +34,12 @@ class BucketItem extends Component {
     this.setState({ editModeEnabled: !this.state.editModeEnabled });
   }
 
+  //currently updateComplete requires two clicks to change the boolean value from false to true. Why?
   updateComplete(prevState) {
     this.setState({
       isComplete: !prevState.isComplete,
     });
     let newState = { ...this.state };
-    console.log(this.state);
-    console.log(this.state.isComplete);
     this.props.dispatch({
       type: "UPDATE_COMPLETE",
       payload: {
@@ -73,7 +72,7 @@ class BucketItem extends Component {
             <button
               className="btn"
               onClick={this.updateComplete.bind(this)}
-              defaultChecked={this.state.isComplete}
+              // defaultChecked={this.state.isComplete}
             >
               Did it!
             </button>
