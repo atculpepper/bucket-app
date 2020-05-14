@@ -100,6 +100,26 @@ router.put("/edit/updateComplete/:experienceID", (req, res) => {
     });
 });
 
+//PUT route to update description of a list item
+//THIS NEEDS TO BE EDITED from 107 down
+router.put("/edit/updateDescription/:experienceID", (req, res) => {
+  const queryText = `UPDATE "experiences" 
+  SET "description" = $1
+  WHERE "id" = $2;`;
+  const newDescription = req.body.newDescription;
+  const experienceID = req.body.experienceID;
+
+  pool
+    .query(queryText, [newDescription, experienceID])
+    .then((responseDB) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.warn(err);
+      res.sendStatus(500);
+    });
+});
+
 // route to delete list item
 router.delete("/:experienceID", (req, res) => {
   let experienceID = req.params.experienceID;

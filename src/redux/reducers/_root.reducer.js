@@ -5,6 +5,8 @@ import user from "./user.reducer";
 import getList from "./getList.reducer";
 import addItem from "./addItem.reducer";
 import imageInfo from "./imageInfo.reducer";
+import updateComplete from "./updateComplete.reducer";
+import updateDescription from "./updateDescription.reducer";
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +21,8 @@ const rootReducer = combineReducers({
   getList,
   addItem,
   imageInfo,
+  updateComplete,
+  updateDescription,
 });
 
 export default rootReducer;
