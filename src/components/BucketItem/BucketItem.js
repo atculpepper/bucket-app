@@ -91,7 +91,7 @@ class BucketItem extends Component {
               Delete
             </button>
             <button className="btn" onClick={this.handleEditClick.bind(this)}>
-              Edit
+              Reset
             </button>
             <button className="btn" onClick={this.updateComplete.bind(this)}>
               Did it!
@@ -106,14 +106,16 @@ class BucketItem extends Component {
                       payload: {
                         experienceID: this.props.item.id,
                         userID: this.props.store.user.id,
+                        newDescription: this.state.bucketItem,
                       },
                     });
+                    this.updateComplete.bind(this);
                   }}
                 >
                   <input
                     type="text"
                     // value={item.description}
-                    placeholder={item.description}
+                    placeholder="Change up your bucket item...hit return to submit your changes!"
                     disabled={!this.state.editModeEnabled}
                     size="75"
                     onChange={this.handleInputChangeFor("bucketItem")}
