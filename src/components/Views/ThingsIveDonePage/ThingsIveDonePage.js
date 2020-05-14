@@ -26,6 +26,11 @@ class ThingsIveDonePage extends Component {
             <BucketItem key={index} item={item} className="listItem" />
           ))}
         </div>
+        <div>
+          <ul>
+            <li>I'd love a list here with its own conditional rendering</li>
+          </ul>
+        </div>
       </div>
     );
   }

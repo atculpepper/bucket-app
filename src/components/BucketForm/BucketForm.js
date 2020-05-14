@@ -65,7 +65,12 @@ class BucketForm extends Component {
         </center>
         <div>
           {this.props.store.getList.map((item, index) => (
-            <BucketItem key={index} item={item} className="listItem" />
+            <BucketItem
+              key={index}
+              item={item}
+              className="listItem"
+              description={item.description}
+            />
           ))}
         </div>
       </div>
