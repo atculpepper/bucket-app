@@ -105,12 +105,12 @@ router.put("/edit/updateComplete/:experienceID", (req, res) => {
 router.put("/edit/updateDescription/:experienceID", (req, res) => {
   const queryText = `UPDATE "experiences" 
   SET "description" = $1
-  WHERE "experience_id" = $2;`;
-  const completeValue = req.body.completeValue;
+  WHERE "id" = $2;`;
+  const newDescription = req.body.newDescription;
   const experienceID = req.body.experienceID;
 
   pool
-    .query(queryText, [completeValue, experienceID])
+    .query(queryText, [newDescription, experienceID])
     .then((responseDB) => {
       res.sendStatus(200);
     })
