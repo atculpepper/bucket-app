@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import mapStoreToProps from "../../redux/mapStoreToProps";
 import { withRouter } from "react-router-dom";
 // import BucketItemEdit from "BucketItemEdit";
+import BucketIcon from "../../assets/Bucket.png";
 
 class BucketComplete extends Component {
   componentDidMount() {
@@ -32,6 +33,7 @@ class BucketComplete extends Component {
           <div>
             <ul>
               <li className="listItem">{item.description}</li>
+              <img src={BucketIcon} />
             </ul>
           </div>
         </div>
