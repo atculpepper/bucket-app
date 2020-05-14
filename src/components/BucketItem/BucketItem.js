@@ -32,6 +32,7 @@ class BucketItem extends Component {
 
   handleEditClick() {
     this.setState({ editModeEnabled: !this.state.editModeEnabled });
+    console.log(this.state.editModeEnabled);
   }
 
   //currently updateComplete requires two clicks to change the boolean value from false to true. Why?
@@ -51,15 +52,44 @@ class BucketItem extends Component {
     });
   }
 
-  //TODO: write updateComplete function to dispatch UPDATE_COMPLETE to update boolean value from false to true
-  //   updateComplete = (event) => {}
+  //TODO: write clickEdit function to conditionally render an input form
 
   render() {
     const { item } = this.props;
 
     let Completed = item.completed;
+    let allowEdit = this.state.editModeEnabled;
     if (Completed) {
       return <div></div>;
+    } else if (allowEdit) {
+      return (
+        <div className="BucketListElement">
+          <div>
+            <button className="btn" onClick={this.deleteBucketItem}>
+              Delete
+            </button>
+            <button className="btn" onClick={this.handleEditClick.bind(this)}>
+              Edit
+            </button>
+            <button className="btn" onClick={this.updateComplete.bind(this)}>
+              Did it!
+            </button>
+            <ul>
+              <li disabled={!this.state.editModeEnabled} className="listItem">
+                {/* {item.description} */}
+                <span>
+                  <input
+                    type="text"
+                    value={item.description}
+                    disabled={!this.state.editModeEnabled}
+                    size="250"
+                  />
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      );
     } else {
       return (
         <div className="BucketListElement">
@@ -70,21 +100,12 @@ class BucketItem extends Component {
             <button className="btn" onClick={this.handleEditClick.bind(this)}>
               Edit
             </button>
-            <button
-              className="btn"
-              onClick={this.updateComplete.bind(this)}
-              // defaultChecked={this.state.isComplete}
-            >
+            <button className="btn" onClick={this.updateComplete.bind(this)}>
               Did it!
             </button>
             <ul>
-              <li className="listItem">
+              <li disabled={!this.state.editModeEnabled} className="listItem">
                 {item.description}
-                {/* <input
-                  type="text"
-                  value={item.description}
-                  disabled={!this.state.editModeEnabled}
-                ></input> */}
               </li>
             </ul>
           </div>
