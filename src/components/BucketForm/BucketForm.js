@@ -78,4 +78,6 @@ class BucketForm extends Component {
   }
 }
 
+// const BucketItem = ({ item }) => <li>{item}</li>;
+
 export default withRouter(connect(mapStoreToProps)(BucketForm));

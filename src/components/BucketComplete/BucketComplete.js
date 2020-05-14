@@ -4,7 +4,7 @@ import mapStoreToProps from "../../redux/mapStoreToProps";
 import { withRouter } from "react-router-dom";
 // import BucketItemEdit from "BucketItemEdit";
 
-class BucketItem extends Component {
+class BucketComplete extends Component {
   componentDidMount() {
     // load up all information from the server
     this.props.dispatch({
@@ -59,39 +59,19 @@ class BucketItem extends Component {
 
     let Completed = item.completed;
     if (Completed) {
-      return <div></div>;
-    } else {
       return (
         <div className="BucketListElement">
           <div>
-            <button className="btn" onClick={this.deleteBucketItem}>
-              Delete
-            </button>
-            <button className="btn" onClick={this.handleEditClick.bind(this)}>
-              Edit
-            </button>
-            <button
-              className="btn"
-              onClick={this.updateComplete.bind(this)}
-              // defaultChecked={this.state.isComplete}
-            >
-              Did it!
-            </button>
             <ul>
-              <li className="listItem">
-                {item.description}
-                {/* <input
-                  type="text"
-                  value={item.description}
-                  disabled={!this.state.editModeEnabled}
-                ></input> */}
-              </li>
+              <li className="listItem">{item.description}</li>
             </ul>
           </div>
         </div>
       );
+    } else {
+      return <div></div>;
     }
   }
 }
 
-export default withRouter(connect(mapStoreToProps)(BucketItem));
+export default withRouter(connect(mapStoreToProps)(BucketComplete));

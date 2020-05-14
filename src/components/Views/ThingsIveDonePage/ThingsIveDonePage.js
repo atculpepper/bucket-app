@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapStoreToProps from "../../../redux/mapStoreToProps";
 import BucketItem from "../../BucketItem/BucketItem";
+import BucketComplete from "../../BucketComplete/BucketComplete";
 
 class ThingsIveDonePage extends Component {
   componentDidMount() {
@@ -23,13 +24,8 @@ class ThingsIveDonePage extends Component {
         </div>
         <div>
           {this.props.store.getList.map((item, index) => (
-            <BucketItem key={index} item={item} className="listItem" />
+            <BucketComplete key={index} item={item} className="listItem" />
           ))}
-        </div>
-        <div>
-          <ul>
-            <li>I'd love a list here with its own conditional rendering</li>
-          </ul>
         </div>
       </div>
     );

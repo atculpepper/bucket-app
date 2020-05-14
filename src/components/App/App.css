@@ -9,6 +9,10 @@ body {
   padding: 15px;
 }
 
+.img-container {
+  text-align: center;
+}
+
 .alert {
   background-color: #ff4545;
   margin: 50px;
