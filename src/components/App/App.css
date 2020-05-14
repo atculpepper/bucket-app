@@ -5,8 +5,12 @@ body {
 
 .welcomeDIV {
   margin: 10px auto;
-  background-color: aqua;
+  background-color: rgb(145, 206, 206);
   padding: 15px;
+}
+
+.img-container {
+  text-align: center;
 }
 
 .alert {

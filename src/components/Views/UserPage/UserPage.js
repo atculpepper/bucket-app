@@ -12,7 +12,6 @@ class UserPage extends Component {
         <div>
           <div className="welcomeDIV">
             <h1>{this.props.store.user.username}'s Bucket List</h1>
-            {/* <p>Your ID is: {this.props.store.user.id}</p> */}
 
             <LogOutButton className="log-in" />
           </div>

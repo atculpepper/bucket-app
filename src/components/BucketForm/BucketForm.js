@@ -8,7 +8,6 @@ import BucketItem from "../BucketItem/BucketItem";
 class BucketForm extends Component {
   state = {
     bucketItem: "",
-    // userID: this.props.store.user.id,
   };
 
   //this method runs when component is mounted to the App
@@ -66,12 +65,19 @@ class BucketForm extends Component {
         </center>
         <div>
           {this.props.store.getList.map((item, index) => (
-            <BucketItem key={index} item={item} className="listItem" />
+            <BucketItem
+              key={index}
+              item={item}
+              className="listItem"
+              description={item.description}
+            />
           ))}
         </div>
       </div>
     );
   }
 }
+
+// const BucketItem = ({ item }) => <li>{item}</li>;
 
 export default withRouter(connect(mapStoreToProps)(BucketForm));
