@@ -46,6 +46,7 @@ h1 {
 
 .BucketListElement {
   margin: 50px;
+  margin-bottom: 100px;
   padding: 50px;
   border-radius: 2px;
   border-style: solid;

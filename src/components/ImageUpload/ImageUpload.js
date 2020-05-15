@@ -4,11 +4,35 @@ import DropzoneS3Uploader from "react-dropzone-s3-uploader";
 import { withRouter } from "react-router-dom";
 import mapStoreToProps from "../../redux/mapStoreToProps";
 
+const dropStyles = {
+  width: "100px",
+  height: "30px",
+  border: "1px solid black",
+  "background-color": "#f0dd0d",
+  "text-align": "center",
+  "border-radius": "4px",
+  color: "black",
+  padding: "10px",
+  cursor: "pointer",
+  "margin-top": "40px",
+};
+
 class ImageUpload extends Component {
+  state = {
+    imgUrl: null,
+    loading: false,
+  };
+
   handleFinishedUpload = (info) => {
     console.log("this is the info:", info);
     console.log("File uploaded with filename", info.filename);
     console.log("Access it on s3 at", info.fileUrl);
+
+    this.setState({
+      imgURL: null,
+      loading: false,
+    });
+
     this.props.dispatch({
       type: "POST_IMAGE_URL",
       payload: {
@@ -25,15 +49,34 @@ class ImageUpload extends Component {
     };
     const s3Url = "https://annesbucket.s3.amazonaws.com";
 
+    const innerDrop = (
+      <div>
+        <p>Add photo</p>
+      </div>
+    );
+
     return (
       <div>
-        <p>Click or drag image to upload</p>
-        <DropzoneS3Uploader
-          onFinish={this.handleFinishedUpload}
-          s3Url={s3Url}
-          maxSize={1024 * 1024 * 5}
-          upload={uploadOptions}
-        />
+        {!this.state.imgURL ? (
+          <div>
+            <DropzoneS3Uploader
+              children={innerDrop}
+              onFinish={this.handleFinishedUpload}
+              s3Url={s3Url}
+              maxSize={1024 * 1024 * 5}
+              upload={uploadOptions}
+              style={dropStyles}
+            />
+          </div>
+        ) : (
+          <div style={{ width: "250px", margin: "0 auto" }}>
+            <img
+              src={this.state.imgURL}
+              style={{ width: "250px" }}
+              alt="Uploaded"
+            />
+          </div>
+        )}
       </div>
     );
   }

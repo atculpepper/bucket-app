@@ -34,12 +34,11 @@ class BucketComplete extends Component {
         <div className="BucketListElement">
           <div>
             <ul className="listItem">
-              <li className="listItem" style={{ textAlign: "center" }}>
-                {item.description}
-              </li>
-              <button className="btn">Add Photo</button>
+              <span>
+                <li>{item.description}</li>
+              </span>
+              <ImageUpload />
             </ul>
-            <ImageUpload />
           </div>
         </div>
       );
