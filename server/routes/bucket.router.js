@@ -14,7 +14,7 @@ router.get("/:id", rejectUnauthenticated, (req, res) => {
   console.log(userID);
   const queryText = `SELECT "user_photos_experiences".user_id, "experiences".description, "experiences".id, "user_photos_experiences".completed
   FROM "user_photos_experiences" JOIN "experiences" ON "user_photos_experiences".experience_id = "experiences".id
-  WHERE "user_id" = $1;`;
+  WHERE "user_id" = $1 ORDER BY "id" DESC;`;
   pool
     .query(queryText, [userID])
     .then((responseDB) => {
