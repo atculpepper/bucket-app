@@ -33,7 +33,7 @@ class BucketComplete extends Component {
       return (
         <div className="BucketListElement">
           <div>
-            <ul>
+            <ul className="listItem">
               <li className="listItem" style={{ textAlign: "center" }}>
                 {item.description}
               </li>
