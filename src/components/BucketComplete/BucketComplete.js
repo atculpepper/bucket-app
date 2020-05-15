@@ -3,8 +3,12 @@ import { connect } from "react-redux";
 import mapStoreToProps from "../../redux/mapStoreToProps";
 import { withRouter } from "react-router-dom";
 // import BucketItemEdit from "BucketItemEdit";
-import BucketIcon from "../../assets/Bucket.png";
 import ImageUpload from "../ImageUpload/ImageUpload";
+
+const imageStyle = {
+  width: "100%",
+  overflow: "hidden",
+};
 
 class BucketComplete extends Component {
   componentDidMount() {
@@ -16,14 +20,6 @@ class BucketComplete extends Component {
     });
   }
 
-  state = {
-    isComplete: false,
-    editModeEnabled: false,
-  };
-
-  //TODO: write updateComplete function to dispatch UPDATE_COMPLETE to update boolean value from false to true
-  //   updateComplete = (event) => {}
-
   render() {
     const { item } = this.props;
 
@@ -34,13 +30,32 @@ class BucketComplete extends Component {
         <div className="BucketListElement">
           <div>
             <ul className="listItem">
-              <li className="listItem" style={{ textAlign: "center" }}>
-                {item.description}
-              </li>
-              <button className="btn">Add Photo</button>
+              <span>{/* <li>{item.description}</li> */}</span>
             </ul>
-            <ImageUpload />
+            <img
+              src={this.props.store.getList.photo_id}
+              alt={"Photo of " + this.props.item.description}
+              style={imageStyle}
+            />
           </div>
+          <ImageUpload
+            experienceID={this.props.item.id}
+            itemDescription={this.props.item.description}
+          />
+          <button
+            className="btn"
+            onClick={() => {
+              this.props.dispatch({
+                type: "GET_PHOTOS_EXPERIENCES",
+                payload: {
+                  experienceID: this.props.item.id,
+                  userID: this.props.store.user.id,
+                },
+              });
+            }}
+          >
+            Submit
+          </button>
         </div>
       );
     } else {

@@ -49,7 +49,7 @@ class BucketForm extends Component {
         <center>
           <button
             type="button"
-            className="link-button"
+            className="btn"
             onClick={() => {
               this.props.dispatch({
                 type: "ADD_ITEM",

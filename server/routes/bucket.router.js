@@ -9,6 +9,7 @@ const {
 =======
  * GET route for getting user experiences based on passing ID as a param
  */
+//need to add a selection from photos table
 router.get("/:id", rejectUnauthenticated, (req, res) => {
   const userID = req.params.id;
   console.log(userID);

@@ -4,7 +4,6 @@ import { takeLatest, put } from "redux-saga/effects";
 function* postImageUrl(action) {
   try {
     const userID = action.payload.userID;
-    const imgURL = action.payload.imgURL;
 
     const config = {
       headers: { "Content-Type": "application/json" },
