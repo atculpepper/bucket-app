@@ -8,6 +8,7 @@ import deleteItemSaga from "./deleteItem.saga";
 import imageInfoSaga from "./imageInfo.saga";
 import updateCompleteSaga from "./updateComplete.saga";
 import updateDescriptionSaga from "./updateDescription.saga";
+import getPhotosExperiencesSaga from "./getPhotosExperiences.saga";
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -27,5 +28,6 @@ export default function* rootSaga() {
     imageInfoSaga(),
     updateCompleteSaga(),
     updateDescriptionSaga(),
+    getPhotosExperiencesSaga(),
   ]);
 }

@@ -17,6 +17,7 @@ const dropStyles = {
   "margin-top": "40px",
   float: "none",
   display: "block",
+  "margin-left": "20px",
 };
 
 class ImageUpload extends Component {
@@ -78,10 +79,10 @@ class ImageUpload extends Component {
                 style={dropStyles}
               />
             </div>
-            <div>
+            {/* <div>
               <em>Veni, Vidi, Vinci!</em> <br></br>
               {this.props.itemDescription}
-            </div>
+            </div> */}
           </div>
         ) : (
           <div style={{ width: "250px", margin: "0 auto" }}>

@@ -5,6 +5,11 @@ import { withRouter } from "react-router-dom";
 // import BucketItemEdit from "BucketItemEdit";
 import ImageUpload from "../ImageUpload/ImageUpload";
 
+const imageStyle = {
+  width: "100%",
+  overflow: "hidden",
+};
+
 class BucketComplete extends Component {
   componentDidMount() {
     // load up all information from the server
@@ -17,7 +22,6 @@ class BucketComplete extends Component {
 
   render() {
     const { item } = this.props;
-    const { index } = this.props;
 
     let Completed = item.completed;
     // if item.photo_id === !null
@@ -26,11 +30,13 @@ class BucketComplete extends Component {
         <div className="BucketListElement">
           <div>
             <ul className="listItem">
-              <span>
-                <li>{item.description}</li>
-              </span>
-              <li img src={this.photo_id} />
+              <span>{/* <li>{item.description}</li> */}</span>
             </ul>
+            <img
+              src={this.props.store.getList.photo_id}
+              alt={"Photo of " + this.props.item.description}
+              style={imageStyle}
+            />
           </div>
           <ImageUpload
             experienceID={this.props.item.id}
@@ -39,14 +45,13 @@ class BucketComplete extends Component {
           <button
             className="btn"
             onClick={() => {
-              //   this.props.dispatch({
-              //     type: "ADD_ITEM",
-              //     payload: {
-              //       bucketItem: this.state.bucketItem,
-              //       userID: this.props.store.user.id,
-              //     },
-              //   });
-              console.log(this.props.item.id);
+              this.props.dispatch({
+                type: "GET_PHOTOS_EXPERIENCES",
+                payload: {
+                  experienceID: this.props.item.id,
+                  userID: this.props.store.user.id,
+                },
+              });
             }}
           >
             Submit

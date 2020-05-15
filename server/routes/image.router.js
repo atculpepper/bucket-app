@@ -8,7 +8,25 @@ const {
 /**
  * GET route template
  */
-// router.get("/", (req, res) => {});
+router.get("/:userID", rejectUnauthenticated, (req, res) => {
+  const userID = req.params.id;
+  const experienceID = req.params.experienceID;
+  console.log(userID);
+  const queryText = `SELECT "user_photos_experiences".experience_id, "user_photos_experiences".photo_id, "photos".experience_photo
+  FROM "user_photos_experiences"
+   JOIN "photos" ON "user_photos_experiences".photo_id = "photos".id WHERE "user_photos_experiences".experience_id = $1`;
+  pool
+    .query(queryText, [experienceID])
+    .then((responseDB) => {
+      const dbRows = responseDB.rows;
+      console.table(dbRows);
+      res.send(dbRows);
+    })
+    .catch((err) => {
+      console.log("error:", err);
+      res.sendStatus(500);
+    });
+});
 
 /**
  * PUT route
