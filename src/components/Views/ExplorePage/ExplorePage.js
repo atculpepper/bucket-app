@@ -7,7 +7,7 @@ import mapStoreToProps from "../../../redux/mapStoreToProps";
 class ExplorePage extends Component {
   render() {
     return (
-      <div className="WelcomeDIV">
+      <div className="welcomeDIV">
         <div>
           <h1>EXPLORE THIS BUCKET EXPERIENCE!</h1>
 

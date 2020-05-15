@@ -18,7 +18,7 @@ class ThingsIveDonePage extends Component {
   render() {
     return (
       <div>
-        <div className="WelcomeDIV">
+        <div>
           <h1>Things {this.props.store.user.username} Has Accomplished</h1>
         </div>
         <div>

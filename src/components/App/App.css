@@ -45,9 +45,11 @@ h1 {
 }
 
 .BucketListElement {
-  margin: 10px auto;
+  margin: 50px;
   padding: 50px;
   border-radius: 2px;
+  border-style: solid;
+  border-color: rgb(145, 206, 206);
 }
 
 input {
