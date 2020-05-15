@@ -37,9 +37,9 @@ class BucketComplete extends Component {
               <span>
                 <li>{item.description}</li>
               </span>
-              <ImageUpload />
             </ul>
           </div>
+          <ImageUpload />
         </div>
       );
     } else {

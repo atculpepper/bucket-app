@@ -6,15 +6,17 @@ import mapStoreToProps from "../../redux/mapStoreToProps";
 
 const dropStyles = {
   width: "100px",
-  height: "30px",
+  height: "70px",
   border: "1px solid black",
-  "background-color": "#f0dd0d",
+  "background-color": "light grey",
   "text-align": "center",
   "border-radius": "4px",
   color: "black",
   padding: "10px",
   cursor: "pointer",
   "margin-top": "40px",
+  float: "none",
+  display: "block",
 };
 
 class ImageUpload extends Component {
@@ -27,6 +29,7 @@ class ImageUpload extends Component {
     console.log("this is the info:", info);
     console.log("File uploaded with filename", info.filename);
     console.log("Access it on s3 at", info.fileUrl);
+    console.log(this.props.store.getList.id);
 
     this.setState({
       imgURL: null,
@@ -38,6 +41,7 @@ class ImageUpload extends Component {
       payload: {
         userID: this.props.store.user.id,
         imgURL: info.fileUrl,
+        experienceID: this.props.store.getList.id,
       },
     });
   };
@@ -51,7 +55,7 @@ class ImageUpload extends Component {
 
     const innerDrop = (
       <div>
-        <p>Add photo</p>
+        <p>Upload a photo!</p>
       </div>
     );
 
