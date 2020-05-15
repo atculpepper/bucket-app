@@ -23,17 +23,19 @@ class ImageUpload extends Component {
   state = {
     imgUrl: null,
     loading: false,
+    experienceID: "",
   };
 
   handleFinishedUpload = (info) => {
     console.log("this is the info:", info);
     console.log("File uploaded with filename", info.filename);
     console.log("Access it on s3 at", info.fileUrl);
-    console.log(this.props.store.getList.id);
-
+    // console.log(this.props.experienceID);
+    // console.log(this.props.item.id);
     this.setState({
       imgURL: null,
       loading: false,
+      experienceID: this.props.experienceID,
     });
 
     this.props.dispatch({
@@ -41,7 +43,7 @@ class ImageUpload extends Component {
       payload: {
         userID: this.props.store.user.id,
         imgURL: info.fileUrl,
-        experienceID: this.props.store.getList.id,
+        experienceID: this.props.experienceID,
       },
     });
   };
@@ -53,6 +55,9 @@ class ImageUpload extends Component {
     };
     const s3Url = "https://annesbucket.s3.amazonaws.com";
 
+    const { item } = this.props;
+    const { index } = this.props;
+
     const innerDrop = (
       <div>
         <p>Upload a photo!</p>
@@ -63,14 +68,20 @@ class ImageUpload extends Component {
       <div>
         {!this.state.imgURL ? (
           <div>
-            <DropzoneS3Uploader
-              children={innerDrop}
-              onFinish={this.handleFinishedUpload}
-              s3Url={s3Url}
-              maxSize={1024 * 1024 * 5}
-              upload={uploadOptions}
-              style={dropStyles}
-            />
+            <div>
+              <DropzoneS3Uploader
+                children={innerDrop}
+                onFinish={this.handleFinishedUpload}
+                s3Url={s3Url}
+                maxSize={1024 * 1024 * 5}
+                upload={uploadOptions}
+                style={dropStyles}
+              />
+            </div>
+            <div>
+              <em>Veni, Vidi, Vinci!</em> <br></br>
+              {this.props.itemDescription}
+            </div>
           </div>
         ) : (
           <div style={{ width: "250px", margin: "0 auto" }}>

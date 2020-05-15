@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import mapStoreToProps from "../../redux/mapStoreToProps";
 import { withRouter } from "react-router-dom";
 // import BucketItemEdit from "BucketItemEdit";
-import BucketIcon from "../../assets/Bucket.png";
 import ImageUpload from "../ImageUpload/ImageUpload";
 
 class BucketComplete extends Component {
@@ -16,16 +15,9 @@ class BucketComplete extends Component {
     });
   }
 
-  state = {
-    isComplete: false,
-    editModeEnabled: false,
-  };
-
-  //TODO: write updateComplete function to dispatch UPDATE_COMPLETE to update boolean value from false to true
-  //   updateComplete = (event) => {}
-
   render() {
     const { item } = this.props;
+    const { index } = this.props;
 
     let Completed = item.completed;
     // if item.photo_id === !null
@@ -37,9 +29,28 @@ class BucketComplete extends Component {
               <span>
                 <li>{item.description}</li>
               </span>
+              <li img src={this.photo_id} />
             </ul>
           </div>
-          <ImageUpload />
+          <ImageUpload
+            experienceID={this.props.item.id}
+            itemDescription={this.props.item.description}
+          />
+          <button
+            className="btn"
+            onClick={() => {
+              //   this.props.dispatch({
+              //     type: "ADD_ITEM",
+              //     payload: {
+              //       bucketItem: this.state.bucketItem,
+              //       userID: this.props.store.user.id,
+              //     },
+              //   });
+              console.log(this.props.item.id);
+            }}
+          >
+            Submit
+          </button>
         </div>
       );
     } else {
