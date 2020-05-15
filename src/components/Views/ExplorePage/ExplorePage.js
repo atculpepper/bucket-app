@@ -7,10 +7,9 @@ import mapStoreToProps from "../../../redux/mapStoreToProps";
 class ExplorePage extends Component {
   render() {
     return (
-      <div>
+      <div className="WelcomeDIV">
         <div>
-          {/* <h1 id="welcome">{this.props.store.user.username}'s Bucket List</h1> */}
-          <p>EXPLORE THIS BUCKET EXPERIENCE!</p>
+          <h1>EXPLORE THIS BUCKET EXPERIENCE!</h1>
 
           <LogOutButton className="log-in" />
         </div>

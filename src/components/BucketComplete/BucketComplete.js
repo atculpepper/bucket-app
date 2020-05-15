@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import mapStoreToProps from "../../redux/mapStoreToProps";
 import { withRouter } from "react-router-dom";
 // import BucketItemEdit from "BucketItemEdit";
+import BucketIcon from "../../assets/Bucket.png";
+import ImageUpload from "../ImageUpload/ImageUpload";
 
 class BucketComplete extends Component {
   componentDidMount() {
@@ -26,13 +28,18 @@ class BucketComplete extends Component {
     const { item } = this.props;
 
     let Completed = item.completed;
+    // if item.photo_id === !null
     if (Completed) {
       return (
         <div className="BucketListElement">
           <div>
             <ul>
-              <li className="listItem">{item.description}</li>
+              <li className="listItem" style={{ textAlign: "center" }}>
+                {item.description}
+              </li>
+              <button className="btn">Add Photo</button>
             </ul>
+            <ImageUpload />
           </div>
         </div>
       );
