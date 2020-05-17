@@ -1,12 +1,13 @@
 ul {
   list-style-type: none;
+  font-size: 200%;
 }
 
 .listItem {
   width: 50%;
   height: 75px;
   margin: 20px auto;
-  padding: 10px;
+  margin-top: 30px;
   border-radius: 2px;
   box-sizing: border-box;
   border-radius: 2px;
@@ -19,4 +20,14 @@ ul {
   border-radius: 2px;
   border-style: solid black;
   opacity: 0.8;
+}
+
+.image {
+  position: relative;
+  max-width: 80%;
+  top: 10%;
+  left: 10%;
+  border-radius: 3px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.9);
+  margin-left: 170px;
 }

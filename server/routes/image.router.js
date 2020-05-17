@@ -1,5 +1,6 @@
 const express = require("express");
 const pool = require("../modules/pool");
+// app.use(express.bodyParser());
 const router = express.Router();
 const {
   rejectUnauthenticated,
@@ -8,10 +9,15 @@ const {
 /**
  * GET route template
  */
-router.get("/:userID", rejectUnauthenticated, (req, res) => {
-  const userID = req.params.id;
-  const experienceID = req.params.experienceID;
-  console.log(userID);
+router.get("/photoexperience/:userID", rejectUnauthenticated, (req, res) => {
+  console.log(
+    "this is what the server is getting:",
+    req.query.userID,
+    req.query.experienceID
+  );
+  console.log(req.query);
+  // res.header("Access-Control-Allow-Origin", "*");
+  const experienceID = req.query.experienceID;
   const queryText = `SELECT "user_photos_experiences".experience_id, "user_photos_experiences".photo_id, "photos".experience_photo
   FROM "user_photos_experiences"
    JOIN "photos" ON "user_photos_experiences".photo_id = "photos".id WHERE "user_photos_experiences".experience_id = $1`;
@@ -23,7 +29,7 @@ router.get("/:userID", rejectUnauthenticated, (req, res) => {
       res.send(dbRows);
     })
     .catch((err) => {
-      console.log("error:", err);
+      console.log("error getting photos from photoexperience:", err);
       res.sendStatus(500);
     });
 });

@@ -4,6 +4,8 @@ import mapStoreToProps from "../../redux/mapStoreToProps";
 import { withRouter } from "react-router-dom";
 // import BucketItemEdit from "BucketItemEdit";
 import ImageUpload from "../ImageUpload/ImageUpload";
+import BucketLogo from "../../assets/Bucket.png";
+import ImageView from "../ImageView/ImageView";
 
 const imageStyle = {
   width: "100%",
@@ -30,12 +32,13 @@ class BucketComplete extends Component {
         <div className="BucketListElement">
           <div>
             <ul className="listItem">
-              <span>{/* <li>{item.description}</li> */}</span>
+              <span>
+                <li>{item.description}</li>
+              </span>
             </ul>
-            <img
-              src={this.props.store.getList.photo_id}
-              alt={"Photo of " + this.props.item.description}
-              style={imageStyle}
+            <ImageView
+              photosExperiencesElements={this.props.store.getPhotosExperiences}
+              experienceID={this.props.store.getList.id}
             />
           </div>
           <ImageUpload
@@ -52,6 +55,7 @@ class BucketComplete extends Component {
                   userID: this.props.store.user.id,
                 },
               });
+              console.log(this.props.item.id, this.props.store.user.id);
             }}
           >
             Submit

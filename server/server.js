@@ -4,18 +4,19 @@ require("dotenv").config();
 const app = express();
 const bodyParser = require("body-parser");
 const sessionMiddleware = require("./modules/session-middleware");
+// const cors = require("cors");
 
 const passport = require("./strategies/user.strategy");
+
+// Body parser middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Route includes
 const userRouter = require("./routes/user.router");
 const bucketRouter = require("./routes/bucket.router");
 const UploaderS3Router = require("react-dropzone-s3-uploader/s3router");
 const imageRouter = require("./routes/image.router");
-
-// Body parser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Passport Session Configuration //
 app.use(sessionMiddleware);
@@ -39,6 +40,8 @@ app.use(
     ACL: "public-read", // this is the default - set to `public-read` to let anyone view uploads
   })
 );
+
+// app.use(cors());
 
 // Serve static files
 app.use(express.static("build"));

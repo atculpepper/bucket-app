@@ -27,7 +27,7 @@ h1 {
 }
 
 .formPanel {
-  background-color: #dbd5d5;
+  background-color: rgb(145, 206, 206);
   width: 50%;
   height: 250px;
   margin: 20px auto;
