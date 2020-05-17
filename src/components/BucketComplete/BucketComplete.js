@@ -59,6 +59,7 @@ class BucketComplete extends Component {
                   userID: this.props.store.user.id,
                 },
               });
+              console.log(this.props.item.id, this.props.store.user.id);
             }}
           >
             Submit
