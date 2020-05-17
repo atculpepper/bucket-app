@@ -36,7 +36,7 @@ class BucketComplete extends Component {
               </span>
             </ul>
             <img
-              src={this.props.store.getPhotosExperiences}
+              src={this.props.store.getPhotosExperiences.experience_photo}
               className="image"
             />
             {/* <img

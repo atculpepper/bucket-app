@@ -7,14 +7,17 @@ function* getPhotosExperiences(action) {
 
     const config = {
       headers: { "Content-Type": "application/json" },
+      params: {
+        userID: action.payload.userID,
+        experienceID: action.payload.experienceID,
+      },
       withCredentials: true,
     };
     const response = yield axios.get(
       `/api/imageurl/photoexperience/${userID}`,
-      action.payload,
       config
     );
-    console.log(action.payload);
+    // console.log(action.payload);
     yield put({
       type: "SET_PHOTOS_EXPERIENCES",
       payload: response.data,

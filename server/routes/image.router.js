@@ -12,12 +12,12 @@ const {
 router.get("/photoexperience/:userID", rejectUnauthenticated, (req, res) => {
   console.log(
     "this is what the server is getting:",
-    req.body.userID,
-    req.body.experienceID
+    req.query.userID,
+    req.query.experienceID
   );
-  console.log("req.params.id is:", req.params.id);
-  console.log("this is req:", req);
-  const experienceID = req.body.experienceID;
+  console.log(req.query);
+  // res.header("Access-Control-Allow-Origin", "*");
+  const experienceID = req.query.experienceID;
   const queryText = `SELECT "user_photos_experiences".experience_id, "user_photos_experiences".photo_id, "photos".experience_photo
   FROM "user_photos_experiences"
    JOIN "photos" ON "user_photos_experiences".photo_id = "photos".id WHERE "user_photos_experiences".experience_id = $1`;

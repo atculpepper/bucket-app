@@ -5,19 +5,21 @@ import { withRouter } from "react-router-dom";
 import mapStoreToProps from "../../redux/mapStoreToProps";
 
 const dropStyles = {
+  position: "relative",
+  overflow: "hidden",
   width: "100px",
   height: "70px",
   border: "1px solid black",
-  "background-color": "light grey",
-  "text-align": "center",
+  // "background-color": "light grey",
+  // "text-align": "center",
   "border-radius": "4px",
-  color: "black",
-  padding: "10px",
-  cursor: "pointer",
-  "margin-top": "40px",
-  float: "none",
-  display: "block",
-  "margin-left": "20px",
+  // color: "black",
+  // padding: "10px",
+  // cursor: "pointer",
+  // "margin-top": "40px",
+  // float: "none",
+  // display: "block",
+  // "margin-left": "20px",
 };
 
 class ImageUpload extends Component {
