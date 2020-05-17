@@ -1,5 +1,6 @@
 const express = require("express");
 const pool = require("../modules/pool");
+// app.use(express.bodyParser());
 const router = express.Router();
 const {
   rejectUnauthenticated,
@@ -14,6 +15,8 @@ router.get("/photoexperience/:userID", rejectUnauthenticated, (req, res) => {
     req.body.userID,
     req.body.experienceID
   );
+  console.log("req.params.id is:", req.params.id);
+  console.log("this is req:", req);
   const experienceID = req.body.experienceID;
   const queryText = `SELECT "user_photos_experiences".experience_id, "user_photos_experiences".photo_id, "photos".experience_photo
   FROM "user_photos_experiences"
