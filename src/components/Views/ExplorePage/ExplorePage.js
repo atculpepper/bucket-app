@@ -13,6 +13,11 @@ class ExplorePage extends Component {
 
           <LogOutButton className="log-in" />
         </div>
+        <p>
+          Coming soon: this feature will enable users to click "Explore This"
+          button on their Bucket List and be brought to a page with filtered
+          local options related to their Bucket List task.
+        </p>
       </div>
     );
   }

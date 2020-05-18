@@ -34,17 +34,27 @@ class BucketComplete extends Component {
             <ul className="listItem">
               <span>
                 <li>{item.description}</li>
+                {/* <li>{item.id}</li> */}
               </span>
             </ul>
-            <ImageView
-              photosExperiencesElements={this.props.store.getPhotosExperiences}
-              experienceID={this.props.store.getList.id}
+            {/* <div>
+              {this.props.store.getPhotosExperiences.map(
+                (photoExperience, index) => (
+                  <ImageView
+                    key={index}
+                    photoExperience={photoExperience}
+                    item={this.props.item}
+                  />
+                )
+              )}
+            </div> */}
+          </div>
+          <div>
+            <ImageUpload
+              experienceID={this.props.item.id}
+              itemDescription={this.props.item.description}
             />
           </div>
-          <ImageUpload
-            experienceID={this.props.item.id}
-            itemDescription={this.props.item.description}
-          />
           <button
             className="btn"
             onClick={() => {

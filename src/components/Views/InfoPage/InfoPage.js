@@ -36,7 +36,7 @@ class InfoPage extends Component {
           <LogOutButton className="log-in" />
         </div>
 
-        <div>
+        {/* <div>
           <form className="formPanel" onSubmit={this.addListItem}>
             <div>
               <label htmlFor="username">
@@ -74,7 +74,7 @@ class InfoPage extends Component {
               <button className="btn">Submit</button>
             </div>
           </form>
-        </div>
+        </div> */}
       </div>
     );
   }

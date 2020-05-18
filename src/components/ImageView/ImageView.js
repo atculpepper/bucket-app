@@ -20,21 +20,53 @@ const containerStyle = {
 
 class ImageView extends Component {
   render() {
-    const photosExperiencesElements = this.props.photosExperiencesElements.map(
-      (photo, index) => {
-        return (
-          <div key={index} style={containerStyle}>
-            <img src={photo.experience_photo} style={imageStyle} />
-          </div>
-        );
-      }
-    );
-    return (
-      <div>
-        <div>{photosExperiencesElements}</div>
-      </div>
-    );
+    //defining the "item" within getPhotosExperiences reducer, which is mapped in BucketComplete
+    const photoExperience = this.props.photoExperience;
+    const item = this.props.item;
+
+    if (item.experience_id === photoExperience.experienceID) {
+      return (
+        <div style={containerStyle}>
+          <img src={photoExperience.experience_photo} style={imageStyle} />
+        </div>
+      );
+    } else {
+      return <div></div>;
+    }
   }
 }
 
 export default withRouter(connect(mapStoreToProps)(ImageView));
+
+//STRUGGLE CODE BELOW//
+
+// photoExperience[Symbol.iterator] = function* () {
+//   yield this.props.photoExperience;
+// };
+
+// item[Symbol.iterator] = function* () {
+//   yield this.props.item;
+// };
+
+// let photoExperienceArray = [...photoExperience];
+// let itemArray = [...item];
+// for (let i of photoExperienceArray) {
+//   for (let x of itemArray) {
+//     if (i.id === x.experience_id) {
+//       return (
+//         <div style={containerStyle}>
+//           <p> "I found 3" </p>
+//         </div>
+//       );
+//     } else {
+//       return (
+//         <div>
+//           <p>this was not 3</p>
+//         </div>
+//       );
+//     }
+//   }
+// }
+// const photosExperiencesElements = this.props.photosExperiencesElements.map(
+//   (photo, index) => {
+//     for (let experience of this.props.store.getPhotosExperiences) {
