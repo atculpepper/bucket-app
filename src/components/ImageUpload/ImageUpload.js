@@ -3,13 +3,15 @@ import { connect } from "react-redux";
 import DropzoneS3Uploader from "react-dropzone-s3-uploader";
 import { withRouter } from "react-router-dom";
 import mapStoreToProps from "../../redux/mapStoreToProps";
+import "./ImageUpload.css";
 
 const dropStyles = {
   position: "relative",
   overflow: "hidden",
-  width: "100px",
-  height: "70px",
-  border: "1px solid black",
+  width: "600px",
+  height: "440px",
+  // border: "1px solid black",
+  // "box-shadow": "0 3px 6px rgba(0, 0, 0, 0.9)",
   // "background-color": "light grey",
   // "text-align": "center",
   "border-radius": "4px",
@@ -81,10 +83,9 @@ class ImageUpload extends Component {
                 style={dropStyles}
               />
             </div>
-            {/* <div>
-              <em>Veni, Vidi, Vinci!</em> <br></br>
-              {this.props.itemDescription}
-            </div> */}
+            <div>
+              <em>Click to add a photo!</em> <br></br>
+            </div>
           </div>
         ) : (
           <div style={{ width: "250px", margin: "0 auto" }}>

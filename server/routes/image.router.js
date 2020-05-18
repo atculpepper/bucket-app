@@ -17,12 +17,12 @@ router.get("/photoexperience/:userID", rejectUnauthenticated, (req, res) => {
   );
   console.log(req.query);
   // res.header("Access-Control-Allow-Origin", "*");
-  const experienceID = req.query.experienceID;
-  const queryText = `SELECT "user_photos_experiences".experience_id, "user_photos_experiences".photo_id, "photos".experience_photo
+  const userID = req.query.userID;
+  const queryText = `SELECT "user_photos_experiences".experience_id, "user_photos_experiences".photo_id, "photos".experience_photo, "user_photos_experiences".user_id
   FROM "user_photos_experiences"
-   JOIN "photos" ON "user_photos_experiences".photo_id = "photos".id WHERE "user_photos_experiences".experience_id = $1`;
+   JOIN "photos" ON "user_photos_experiences".photo_id = "photos".id WHERE "user_photos_experiences".user_id = $1;`;
   pool
-    .query(queryText, [experienceID])
+    .query(queryText, [userID])
     .then((responseDB) => {
       const dbRows = responseDB.rows;
       console.table(dbRows);
