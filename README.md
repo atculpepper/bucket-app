@@ -58,7 +58,22 @@ Before pushing to Heroku, run `npm run build` in terminal. This will create a bu
 
 ## Built With
 
-This project uses React, Node, Express, React-Redux, React-Saga, JavaScript, CSS, and Amazon Web Services S3.
+-React
+-Node
+-Express
+-React-Redux
+-Redux-Saga
+-JavaScript
+-CSS
+-Amazon Web Services S3
+-react-dropzone-s3-upl
+-cookie-session
+-body-parser
+-pg
+-dotenv
+-passport
+-Axios
+-PostgresQL
 
 ## Acknowledgements
 
