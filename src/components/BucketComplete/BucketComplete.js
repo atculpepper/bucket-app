@@ -37,7 +37,7 @@ class BucketComplete extends Component {
                 {/* <li>{item.id}</li> */}
               </span>
             </ul>
-            {/* <div>
+            {/* {/* <div>
               {this.props.store.getPhotosExperiences.map(
                 (photoExperience, index) => (
                   <ImageView

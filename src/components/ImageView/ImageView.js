@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapStoreToProps from "../../redux/mapStoreToProps";
 import { withRouter } from "react-router-dom";
+import { selectPhotosExperiences } from "../../redux/reducers/_root.reducer";
 
 // const photosExperiences = this.props.store.photosExperiences;
 // const found = photosExperiences.find(image =>image.experience_id === )
@@ -18,21 +19,27 @@ const containerStyle = {
   padding: "0",
 };
 
+// IMPORTED SELECTPHOTOSEXPERIENCES FROM ROOT REDUCER AND CONNECTED IT TO MAPSTATETOPROPS.
+//NOT YET SURE HOW IT WORKS -- HOW TO PULL DATA FROM IT.
+//commented out conditional rendering and console logging selectPhotosExperiences object
+
 class ImageView extends Component {
   render() {
     //defining the "item" within getPhotosExperiences reducer, which is mapped in BucketComplete
     const photoExperience = this.props.photoExperience;
     const item = this.props.item;
+    const selectPhotosExperiences = this.props;
 
-    if (item.experience_id === photoExperience.experienceID) {
-      return (
-        <div style={containerStyle}>
-          <img src={photoExperience.experience_photo} style={imageStyle} />
-        </div>
-      );
-    } else {
-      return <div></div>;
-    }
+    // if (item.experience_id === selectPhotosExperiences) {
+    return (
+      <div style={containerStyle}>
+        <img src={photoExperience.experience_photo} style={imageStyle} />
+        <p>{selectPhotosExperiences}</p>
+      </div>
+    );
+    // } else {
+    //   return <div></div>;
+    // }
   }
 }
 

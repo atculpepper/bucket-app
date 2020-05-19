@@ -27,4 +27,12 @@ const rootReducer = combineReducers({
   getPhotosExperiences,
 });
 
+export const selectPhotosExperiences = (state) => {
+  const userExperience = state.getList;
+  const experiencePhotoList = state.getPhotosExperiences;
+  return experiencePhotoList.find(
+    (photo) => photo.experience_id === userExperience.id
+  );
+};
+
 export default rootReducer;
