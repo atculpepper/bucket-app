@@ -8,7 +8,7 @@ On trips, I like to keep a "bucket list" of things that I want to accomplish bef
 
 _Duration: 2 Week Sprint_
 
-To see the deployed app, visit here.
+To see the deployed app, visit [here](https://fast-cove-01656.herokuapp.com/#/user)
 
 ## Prerequisites
 
