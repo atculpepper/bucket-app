@@ -7,13 +7,11 @@ import ImageUpload from "../ImageUpload/ImageUpload";
 import BucketLogo from "../../assets/Bucket.png";
 import ImageView from "../ImageView/ImageView";
 
-const imageStyle = {
-  width: "100%",
-  overflow: "hidden",
-};
-
 class BucketComplete extends Component {
   componentDidMount() {
+    // this.state = {
+    //   experienceID: "",
+    // };
     // load up all information from the server
     this.props.dispatch({
       type: "GET_LIST_ITEMS",
@@ -34,26 +32,23 @@ class BucketComplete extends Component {
             <ul className="listItem">
               <span>
                 <li>{item.description}</li>
-                {/* <li>{item.id}</li> */}
+                <li>{item.id}</li>
               </span>
             </ul>
-            {/* {/* <div>
+            <div>
               {this.props.store.getPhotosExperiences.map(
                 (photoExperience, index) => (
                   <ImageView
+                    item={item}
                     key={index}
                     photoExperience={photoExperience}
-                    item={this.props.item}
                   />
                 )
               )}
-            </div> */}
+            </div>
           </div>
           <div>
-            <ImageUpload
-              experienceID={this.props.item.id}
-              itemDescription={this.props.item.description}
-            />
+            <ImageUpload />
           </div>
           <button
             className="btn"
