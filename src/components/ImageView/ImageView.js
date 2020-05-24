@@ -14,7 +14,7 @@ const imageStyle = {
 
 const containerStyle = {
   textAlign: "center",
-  overflow: "hidden",
+  // overflow: "hidden",
   height: "100px",
   padding: "0",
 };
@@ -25,21 +25,20 @@ const containerStyle = {
 
 class ImageView extends Component {
   render() {
-    //defining the "item" within getPhotosExperiences reducer, which is mapped in BucketComplete
-    const photoExperience = this.props.photoExperience;
-    const item = this.props.item;
-    const selectPhotosExperiences = this.props;
-
-    // if (item.experience_id === selectPhotosExperiences) {
-    return (
-      <div style={containerStyle}>
-        <img src={photoExperience.experience_photo} style={imageStyle} />
-        <p>{selectPhotosExperiences}</p>
-      </div>
-    );
-    // } else {
-    //   return <div></div>;
-    // }
+    const { photoExperience } = this.props;
+    const { item } = this.props;
+    if (item.id === photoExperience.experience_id) {
+      return (
+        <div style={containerStyle}>
+          <p>{photoExperience.experience_id}</p>
+          <p>{item.id}</p>
+          <p>{photoExperience.experience_photo}</p>
+          <img src={photoExperience.experience_photo} style={imageStyle} />
+        </div>
+      );
+    } else {
+      return <div></div>;
+    }
   }
 }
 
