@@ -18,6 +18,13 @@ class BucketComplete extends Component {
       //passing the id as a payload because the query on server side is set up to receive an id
       payload: this.props.store.user.id,
     });
+    this.props.dispatch({
+      type: "GET_PHOTOS_EXPERIENCES",
+      payload: {
+        experienceID: this.props.item.id,
+        userID: this.props.store.user.id,
+      },
+    });
   }
 
   render() {
@@ -32,7 +39,7 @@ class BucketComplete extends Component {
             <ul className="listItem">
               <span>
                 <li>{item.description}</li>
-                <li>{item.id}</li>
+                {/* <li>{item.id}</li> */}
               </span>
             </ul>
             <div>
