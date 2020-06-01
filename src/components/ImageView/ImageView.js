@@ -30,9 +30,7 @@ class ImageView extends Component {
     if (item.id === photoExperience.experience_id) {
       return (
         <div style={containerStyle}>
-          <p>{photoExperience.experience_id}</p>
-          <p>{item.id}</p>
-          <p>{photoExperience.experience_photo}</p>
+          {/* <p>{photoExperience.experience_photo}</p> */}
           <img src={photoExperience.experience_photo} style={imageStyle} />
         </div>
       );

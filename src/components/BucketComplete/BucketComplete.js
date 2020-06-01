@@ -21,56 +21,6 @@ const imageStyle = {
   overflow: "hidden",
 };
 
-const customStyles = (theme) =>
-  createStyles({
-    root: {
-      textAlign: "left",
-    },
-    paper_class: {
-      maxWidth: "90%",
-      backgroundColor: "#fff",
-      padding: "3%",
-      margin: "3%",
-    },
-    btn: {
-      backgroundColor: "#cf6a87",
-      color: "#fff",
-      margin: "5%",
-      fontFamily: "Quicksand",
-      "&:hover": {
-        background: "#e66767",
-      },
-    },
-    card: {
-      backgroundColor: "#786fa6",
-      height: "300px",
-      width: "600px",
-      textAlign: "center",
-      margin: "30px",
-    },
-    carousel: {
-      margin: "8.4%",
-    },
-    container: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    font: {
-      fontFamily: "Quicksand",
-      color: "white",
-    },
-    icon_btn: {
-      color: "white",
-      margin: "10px",
-    },
-    center: {
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-    },
-  });
-
 class BucketComplete extends Component {
   componentDidMount() {
     // this.state = {
@@ -81,6 +31,13 @@ class BucketComplete extends Component {
       type: "GET_LIST_ITEMS",
       //passing the id as a payload because the query on server side is set up to receive an id
       payload: this.props.store.user.id,
+    });
+    this.props.dispatch({
+      type: "GET_PHOTOS_EXPERIENCES",
+      payload: {
+        experienceID: this.props.item.id,
+        userID: this.props.store.user.id,
+      },
     });
   }
 
@@ -106,6 +63,7 @@ class BucketComplete extends Component {
                     item={item}
                     key={index}
                     photoExperience={photoExperience}
+                    style={imageStyle}
                   />
                 )
               )}
