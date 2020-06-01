@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapStoreToProps from "../../redux/mapStoreToProps";
 import { withRouter } from "react-router-dom";
-import { selectPhotosExperiences } from "../../redux/reducers/_root.reducer";
 
 // const photosExperiences = this.props.store.photosExperiences;
 // const found = photosExperiences.find(image =>image.experience_id === )
@@ -15,8 +14,8 @@ const imageStyle = {
 const containerStyle = {
   textAlign: "center",
   // overflow: "hidden",
-  height: "100px",
-  padding: "0",
+  width: "18rem;",
+  padding: "2rem",
 };
 
 // IMPORTED SELECTPHOTOSEXPERIENCES FROM ROOT REDUCER AND CONNECTED IT TO MAPSTATETOPROPS.
@@ -29,8 +28,15 @@ class ImageView extends Component {
     const { item } = this.props;
     if (item.id === photoExperience.experience_id) {
       return (
-        <div style={containerStyle}>
-          <img src={photoExperience.experience_photo} style={imageStyle} />
+        <div className="card mb-3">
+          <div className="row no-gutters">
+            <div className="col-md-4">
+              <img
+                className="card-img"
+                src={photoExperience.experience_photo}
+              />
+            </div>
+          </div>
         </div>
       );
     } else {

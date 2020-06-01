@@ -4,21 +4,21 @@ import mapStoreToProps from "../../redux/mapStoreToProps";
 import { withRouter } from "react-router-dom";
 // import BucketItemEdit from "BucketItemEdit";
 import ImageUpload from "../ImageUpload/ImageUpload";
-import BucketLogo from "../../assets/Bucket.png";
 import ImageView from "../ImageView/ImageView";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  withStyles,
-  createStyles,
-  IconButton,
-} from "@material-ui/core";
+
 // import classes from "*.module.css";
 
 const imageStyle = {
   width: "100%",
   overflow: "hidden",
+};
+
+const containerStyle = {
+  display: "flex;",
+  "flex-flow": "row wrap;",
+  "margin-left": "-8px;",
+  padding: "20px",
+  height: "100%",
 };
 
 class BucketComplete extends Component {
@@ -48,45 +48,47 @@ class BucketComplete extends Component {
     // if item.photo_id === !null
     if (Completed) {
       return (
-        <div className="BucketListElement">
-          <div>
-            <ul className="listItem">
-              <span>
-                <li>{item.description}</li>
-                {/* <li>{item.id}</li> */}
-              </span>
-            </ul>
-            <div>
-              {this.props.store.getPhotosExperiences.map(
-                (photoExperience, index) => (
-                  <ImageView
-                    item={item}
-                    key={index}
-                    photoExperience={photoExperience}
-                    style={imageStyle}
-                  />
-                )
-              )}
+        <div className="card-container">
+          <div className="card-mb-3">
+            <div className="row no-gutters">
+              <ul>
+                <span>
+                  <li className="card-title">{item.description}</li>
+                  {/* <li>{item.id}</li> */}
+                </span>
+              </ul>
+              <div>
+                {this.props.store.getPhotosExperiences.map(
+                  (photoExperience, index) => (
+                    <ImageView
+                      item={item}
+                      key={index}
+                      photoExperience={photoExperience}
+                      className="card"
+                    />
+                  )
+                )}
+              </div>
             </div>
+            <div>
+              <ImageUpload />
+            </div>
+            <button
+              className="btn"
+              onClick={() => {
+                this.props.dispatch({
+                  type: "GET_PHOTOS_EXPERIENCES",
+                  payload: {
+                    experienceID: this.props.item.id,
+                    userID: this.props.store.user.id,
+                  },
+                });
+                console.log(this.props.item.id, this.props.store.user.id);
+              }}
+            >
+              Submit
+            </button>
           </div>
-          <div>
-            <ImageUpload />
-          </div>
-          <button
-            className="btn"
-            onClick={() => {
-              this.props.dispatch({
-                type: "GET_PHOTOS_EXPERIENCES",
-                payload: {
-                  experienceID: this.props.item.id,
-                  userID: this.props.store.user.id,
-                },
-              });
-              console.log(this.props.item.id, this.props.store.user.id);
-            }}
-          >
-            Submit
-          </button>
         </div>
       );
     } else {
