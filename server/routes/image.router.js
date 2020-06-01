@@ -41,6 +41,7 @@ router.get("/photoexperience/:userID", rejectUnauthenticated, (req, res) => {
 router.post("/:userID", rejectUnauthenticated, (req, res) => {
   let imgURL = req.body.imgURL;
   let experienceID = req.body.experienceID;
+  console.log("experienceID is:", experienceID);
 
   let queryText = `INSERT INTO "photos" ("experience_photo") VALUES ($1) RETURNING id;`;
 
