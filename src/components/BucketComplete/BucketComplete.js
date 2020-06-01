@@ -53,7 +53,7 @@ class BucketComplete extends Component {
             <ul className="listItem">
               <span>
                 <li>{item.description}</li>
-                <li>{item.id}</li>
+                {/* <li>{item.id}</li> */}
               </span>
             </ul>
             <div>
