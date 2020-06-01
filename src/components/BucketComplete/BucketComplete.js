@@ -6,11 +6,70 @@ import { withRouter } from "react-router-dom";
 import ImageUpload from "../ImageUpload/ImageUpload";
 import BucketLogo from "../../assets/Bucket.png";
 import ImageView from "../ImageView/ImageView";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  withStyles,
+  createStyles,
+  IconButton,
+} from "@material-ui/core";
+// import classes from "*.module.css";
 
 const imageStyle = {
   width: "100%",
   overflow: "hidden",
 };
+
+const customStyles = (theme) =>
+  createStyles({
+    root: {
+      textAlign: "left",
+    },
+    paper_class: {
+      maxWidth: "90%",
+      backgroundColor: "#fff",
+      padding: "3%",
+      margin: "3%",
+    },
+    btn: {
+      backgroundColor: "#cf6a87",
+      color: "#fff",
+      margin: "5%",
+      fontFamily: "Quicksand",
+      "&:hover": {
+        background: "#e66767",
+      },
+    },
+    card: {
+      backgroundColor: "#786fa6",
+      height: "300px",
+      width: "600px",
+      textAlign: "center",
+      margin: "30px",
+    },
+    carousel: {
+      margin: "8.4%",
+    },
+    container: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    font: {
+      fontFamily: "Quicksand",
+      color: "white",
+    },
+    icon_btn: {
+      color: "white",
+      margin: "10px",
+    },
+    center: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+    },
+  });
 
 class BucketComplete extends Component {
   componentDidMount() {
@@ -29,15 +88,16 @@ class BucketComplete extends Component {
     // if item.photo_id === !null
     if (Completed) {
       return (
-        <div className="BucketListElement">
-          <div>
-            <ul className="listItem">
-              <span>
-                <li>{item.description}</li>
-                {/* <li>{item.id}</li> */}
-              </span>
-            </ul>
-            {/* {/* <div>
+        <Card>
+          <div className="BucketListElement">
+            <div>
+              <ul className="listItem">
+                <span>
+                  <li>{item.description}</li>
+                  {/* <li>{item.id}</li> */}
+                </span>
+              </ul>
+              {/* {/* <div>
               {this.props.store.getPhotosExperiences.map(
                 (photoExperience, index) => (
                   <ImageView
@@ -48,29 +108,30 @@ class BucketComplete extends Component {
                 )
               )}
             </div> */}
+            </div>
+            <div>
+              <ImageUpload
+                experienceID={this.props.item.id}
+                itemDescription={this.props.item.description}
+              />
+            </div>
+            <button
+              className="btn"
+              onClick={() => {
+                this.props.dispatch({
+                  type: "GET_PHOTOS_EXPERIENCES",
+                  payload: {
+                    experienceID: this.props.item.id,
+                    userID: this.props.store.user.id,
+                  },
+                });
+                console.log(this.props.item.id, this.props.store.user.id);
+              }}
+            >
+              Submit
+            </button>
           </div>
-          <div>
-            <ImageUpload
-              experienceID={this.props.item.id}
-              itemDescription={this.props.item.description}
-            />
-          </div>
-          <button
-            className="btn"
-            onClick={() => {
-              this.props.dispatch({
-                type: "GET_PHOTOS_EXPERIENCES",
-                payload: {
-                  experienceID: this.props.item.id,
-                  userID: this.props.store.user.id,
-                },
-              });
-              console.log(this.props.item.id, this.props.store.user.id);
-            }}
-          >
-            Submit
-          </button>
-        </div>
+        </Card>
       );
     } else {
       return <div></div>;
