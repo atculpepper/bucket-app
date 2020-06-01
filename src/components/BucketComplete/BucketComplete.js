@@ -73,6 +73,9 @@ const customStyles = (theme) =>
 
 class BucketComplete extends Component {
   componentDidMount() {
+    // this.state = {
+    //   experienceID: "",
+    // };
     // load up all information from the server
     this.props.dispatch({
       type: "GET_LIST_ITEMS",
@@ -88,50 +91,45 @@ class BucketComplete extends Component {
     // if item.photo_id === !null
     if (Completed) {
       return (
-        <Card>
-          <div className="BucketListElement">
+        <div className="BucketListElement">
+          <div>
+            <ul className="listItem">
+              <span>
+                <li>{item.description}</li>
+                <li>{item.id}</li>
+              </span>
+            </ul>
             <div>
-              <ul className="listItem">
-                <span>
-                  <li>{item.description}</li>
-                  {/* <li>{item.id}</li> */}
-                </span>
-              </ul>
-              {/* {/* <div>
               {this.props.store.getPhotosExperiences.map(
                 (photoExperience, index) => (
                   <ImageView
+                    item={item}
                     key={index}
                     photoExperience={photoExperience}
-                    item={this.props.item}
                   />
                 )
               )}
-            </div> */}
             </div>
-            <div>
-              <ImageUpload
-                experienceID={this.props.item.id}
-                itemDescription={this.props.item.description}
-              />
-            </div>
-            <button
-              className="btn"
-              onClick={() => {
-                this.props.dispatch({
-                  type: "GET_PHOTOS_EXPERIENCES",
-                  payload: {
-                    experienceID: this.props.item.id,
-                    userID: this.props.store.user.id,
-                  },
-                });
-                console.log(this.props.item.id, this.props.store.user.id);
-              }}
-            >
-              Submit
-            </button>
           </div>
-        </Card>
+          <div>
+            <ImageUpload />
+          </div>
+          <button
+            className="btn"
+            onClick={() => {
+              this.props.dispatch({
+                type: "GET_PHOTOS_EXPERIENCES",
+                payload: {
+                  experienceID: this.props.item.id,
+                  userID: this.props.store.user.id,
+                },
+              });
+              console.log(this.props.item.id, this.props.store.user.id);
+            }}
+          >
+            Submit
+          </button>
+        </div>
       );
     } else {
       return <div></div>;
