@@ -15,7 +15,7 @@ const containerStyle = {
   textAlign: "center",
   // overflow: "hidden",
   width: "18rem;",
-  padding: "2rem",
+  padding: "rem",
 };
 
 // IMPORTED SELECTPHOTOSEXPERIENCES FROM ROOT REDUCER AND CONNECTED IT TO MAPSTATETOPROPS.
@@ -28,15 +28,11 @@ class ImageView extends Component {
     const { item } = this.props;
     if (item.id === photoExperience.experience_id) {
       return (
-        <div className="card mb-3">
-          <div className="row no-gutters">
-            <div className="col-md-4">
-              <img
-                className="card-img"
-                src={photoExperience.experience_photo}
-              />
-            </div>
-          </div>
+        <div className="card">
+          <img
+            className="card-img-top"
+            src={photoExperience.experience_photo}
+          />
         </div>
       );
     } else {
