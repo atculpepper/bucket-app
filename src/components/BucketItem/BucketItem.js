@@ -4,6 +4,23 @@ import mapStoreToProps from "../../redux/mapStoreToProps";
 import { withRouter } from "react-router-dom";
 // import BucketItemEdit from "BucketItemEdit";
 import "./BucketItem.css";
+import {
+  Typography,
+  Card,
+  CardActionArea,
+  Button,
+  CardContent,
+  withStyles,
+  createStyles,
+  makeStyles,
+} from "@material-ui/core";
+
+//styling for card
+const styles = (theme) => ({
+  card: {
+    backgroundColor: "primary",
+  },
+});
 
 class BucketItem extends Component {
   componentDidMount() {
@@ -65,6 +82,7 @@ class BucketItem extends Component {
 
   render() {
     const { item } = this.props;
+    const { classes } = this.props;
 
     let Completed = item.completed;
     let allowEdit = this.state.editModeEnabled;
@@ -72,65 +90,75 @@ class BucketItem extends Component {
       return <div></div>;
     } else if (allowEdit) {
       return (
-        <div className="BucketListElement">
-          <div>
-            <button className="btn" onClick={this.deleteBucketItem}>
-              Delete
-            </button>
-            <button className="btn" onClick={this.handleEditClick.bind(this)}>
-              Reset
-            </button>
-            <button className="btn" onClick={this.updateComplete.bind(this)}>
-              Did it!
-            </button>
-            <ul>
-              <li disabled={!this.state.editModeEnabled} className="listItem">
-                {/* {item.description} */}
-                <form
-                  onSubmit={(event) => {
-                    this.props.dispatch({
-                      type: "EDIT_ITEM",
-                      payload: {
-                        experienceID: this.props.item.id,
-                        userID: this.props.store.user.id,
-                        newDescription: this.state.bucketItem,
-                      },
-                    });
-                    this.updateComplete.bind(this);
-                  }}
-                >
-                  <input
-                    type="text"
-                    // value={item.description}
-                    placeholder="Change up your bucket item...hit return to submit your changes!"
-                    disabled={!this.state.editModeEnabled}
-                    size="75"
-                    onChange={this.handleInputChangeFor("bucketItem")}
-                  />
-                </form>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <Card variant="outlined">
+          <CardActionArea>
+            {/* <div className="BucketListElement"> */}
+            <div>
+              <Button className="btn" onClick={this.deleteBucketItem}>
+                Delete
+              </Button>
+              <Button className="btn" onClick={this.handleEditClick.bind(this)}>
+                Reset
+              </Button>
+              <Button className="btn" onClick={this.updateComplete.bind(this)}>
+                Did it!
+              </Button>
+              <ul>
+                <li disabled={!this.state.editModeEnabled} className="listItem">
+                  {/* {item.description} */}
+                  <form
+                    onSubmit={(event) => {
+                      this.props.dispatch({
+                        type: "EDIT_ITEM",
+                        payload: {
+                          experienceID: this.props.item.id,
+                          userID: this.props.store.user.id,
+                          newDescription: this.state.bucketItem,
+                        },
+                      });
+                      this.updateComplete.bind(this);
+                    }}
+                  >
+                    <input
+                      type="text"
+                      // value={item.description}
+                      placeholder="Change up your bucket item...hit return to submit your changes!"
+                      disabled={!this.state.editModeEnabled}
+                      size="75"
+                      onChange={this.handleInputChangeFor("bucketItem")}
+                    />
+                  </form>
+                </li>
+              </ul>
+            </div>
+            {/* </div> */}
+          </CardActionArea>
+        </Card>
       );
     } else {
       return (
-        <div className="BucketListElement">
+        <Card variant="outlined">
+          {/* <div className="BucketListElement"> */}
           <div>
-            <button className="btn" onClick={this.deleteBucketItem}>
+            <Button className="btn" onClick={this.deleteBucketItem}>
               Delete
-            </button>
-            <button className="btn" onClick={this.handleEditClick.bind(this)}>
+            </Button>
+            <Button className="btn" onClick={this.handleEditClick.bind(this)}>
               Edit
-            </button>
-            <button className="btn" onClick={this.updateComplete.bind(this)}>
+            </Button>
+            <Button className="btn" onClick={this.updateComplete.bind(this)}>
               Did it!
-            </button>
-            <ul className="listItem">
-              <li disabled={!this.state.editModeEnabled}>{item.description}</li>
-            </ul>
+            </Button>
+            <Typography variant="h6" component="h1">
+              <ul className="listItem">
+                <li disabled={!this.state.editModeEnabled}>
+                  {item.description}
+                </li>
+              </ul>
+            </Typography>
           </div>
-        </div>
+          {/* </div> */}
+        </Card>
       );
     }
   }
